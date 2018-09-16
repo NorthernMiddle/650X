@@ -1,5 +1,5 @@
 /**
- * buttons.cpp - program to set up buttons on V5 screen
+ * V5_lcd_buttons.cpp - program to set up buttons on V5 screen
  *
  * borrowed from jpearman
  * source: https://www.vexforum.com/index.php/34682-how-do-you-make-buttons-on-the-brain-screen
