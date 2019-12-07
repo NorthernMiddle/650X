@@ -25,5 +25,11 @@ using namespace vex;
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-  
+  while(true)
+  {
+    // thread for TRAY LIFT FUNCTIONS
+    thread t( TLSelection_Thread);
+    // Sleep the task for a short amount of time to prevent wasted resources
+    wait(25, msec);
+  }
 }
