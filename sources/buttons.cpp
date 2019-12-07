@@ -1,14 +1,13 @@
-/**
- * V5_lcd_buttons.cpp - program to set up buttons on V5 screen
- *
- * borrowed from jpearman
- * source: https://www.vexforum.com/index.php/34682-how-do-you-make-buttons-on-the-brain-screen
- *
- * @TODO:
- */
-
 #include "robot-config.h"
-          
+
+/**
+  * button.cpp
+  * program to setup buttons on a V5 Brain display
+  * author: jpearman
+  * source: https://www.vexforum.com/index.php/34682-how-do-you-make-buttons-on-the-brain-screen/0
+  *
+  */
+
 // collect data for on screen button
 typedef struct _button {
     int    xpos;
@@ -48,7 +47,7 @@ findButton(  int16_t xpos, int16_t ypos ) {
 
       if( ypos < pButton->ypos || ypos > (pButton->ypos + pButton->height) )
         continue;
-      
+
       return(index);
     }
     return (-1);
@@ -73,11 +72,11 @@ userTouchCallbackPressed() {
     int index;
     int xpos = Brain.Screen.xPosition();
     int ypos = Brain.Screen.yPosition();
-    
+
     if( (index = findButton( xpos, ypos )) >= 0 ) {
       displayButtonControls( index, true );
     }
-    
+
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -88,7 +87,7 @@ userTouchCallbackReleased() {
     int index;
     int xpos = Brain.Screen.xPosition();
     int ypos = Brain.Screen.yPosition();
-    
+
     if( (index = findButton( xpos, ypos )) >= 0 ) {
       buttons[index].state = !buttons[index].state;
       displayButtonControls( index, false );
@@ -104,7 +103,7 @@ displayButtonControls( int index, bool pressed ) {
     Brain.Screen.setPenColor( vex::color(0xe0e0e0) );
 
     for(int i=0;i<sizeof(buttons)/sizeof(button);i++) {
-      
+
       if( buttons[i].state )
         c = buttons[i].color;
       else
@@ -119,7 +118,7 @@ displayButtonControls( int index, bool pressed ) {
       }
       else
         Brain.Screen.drawRectangle( buttons[i].xpos, buttons[i].ypos, buttons[i].width, buttons[i].height );
-  
+
       // outline
       Brain.Screen.drawRectangle( buttons[i].xpos, buttons[i].ypos, buttons[i].width, buttons[i].height, vex::color::transparent );
     }
@@ -132,7 +131,7 @@ int main() {
 
     // initial display
     displayButtonControls( 0, false );
-    
+
     Brain.Screen.printAt(155, 125, "Touch the squares");
     while(1) {
       // Allow other tasks to run
