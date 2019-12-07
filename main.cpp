@@ -28,8 +28,14 @@ int main() {
   while(true)
   {
     // thread for TRAY LIFT FUNCTIONS
-    thread t( TLSelection_Thread);
-    // Sleep the task for a short amount of time to prevent wasted resources
+    thread t( TLSelection_Thread );
+    /* sleep the task for a short amount of time to prevent wasted resources
+       don't hog the CPU :-) */
+    wait(25, msec);
+    // thread for DRIVE FUNCTIONS
+    thread t( tankDrive_Thread );
+     /* sleep the task for a short amount of time to prevent wasted resources
+        don't hog the CPU :-) */
     wait(25, msec);
   }
 }
