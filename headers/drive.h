@@ -10,11 +10,11 @@
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LBmotor              Green Motor    2              
-// LFmotor              Green Motor    1              
-// RBmotor              Green Motor    10              
-// RFmotor              Green Motor    9                         
+// [Name]   [Description]       [Type]        [Port(s)]  [Reversed]
+// LBmotor  Left Back Motor     Green Motor    2         True     
+// LFmotor  Left Front Motor    Green Motor    1         True     
+// RBmotor  Right Back Motor    Green Motor    10        False      
+// RFmotor  Right Front Motor   Green Motor    9         False                
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 // VEX V5 C++ Project
@@ -27,25 +27,28 @@ controller Controller1 = controller( controllerType::primary );
 // deadband threshold
 const int deadband = 15; 
 
+// power reduction factor -- for controlled driving
+float prf = 0.80; // 80% of MAX
+
 // tank drive variable declarations with intialization
 int fwdBck_pct_left = Controller1.Axis3.position();
 int fwdBck_pct_right = Controller1.Axis2.position();
-double drive_lval = Controller1.Axis3.value();
-double drive_rval = Controller1.Axis2.value();
+double drive_lval = Controller1.Axis3.value() *prf;
+double drive_rval = Controller1.Axis2.value() *prf;
 
 // arcade drive variable declarations with intialization
 
 /* --- LEFT JOYSTICK --- */
 int forward_pct_leftjoy = Controller1.Axis3.position();
 int turn_pct_leftjoy = Controller1.Axis4.position();
-double drive_l_leftjoy = forward_pct_leftjoy + turn_pct_leftjoy;   // left '+'
-double drive_r_leftjoy = forward_pct_leftjoy - turn_pct_leftjoy;   // right '-'
+double drive_l_leftjoy = (forward_pct_leftjoy + turn_pct_leftjoy) *prf;   // left '+'
+double drive_r_leftjoy = (forward_pct_leftjoy - turn_pct_leftjoy) *prf;   // right '-'
 
 /* --- RIGHT JOYSTICK --- */
 int forward_pct_rightjoy = Controller1.Axis2.position();
 int turn_pct_rightjoy = Controller1.Axis1.position();
-double drive_l_rightjoy = forward_pct_rightjoy + turn_pct_rightjoy;   // left '+'
-double drive_r_rightjoy = forward_pct_rightjoy - turn_pct_rightjoy;   // right '-'
+double drive_l_rightjoy = (forward_pct_rightjoy + turn_pct_rightjoy) *prf;   // left '+'
+double drive_r_rightjoy = (forward_pct_rightjoy - turn_pct_rightjoy) *prf;   // right '-'
 
 
 //////////////////////////////////////////////////////////
