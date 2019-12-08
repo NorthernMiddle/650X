@@ -1,18 +1,21 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
-/*    Module:       auton.cpp                                                 */
+/*    Module:       auton.h                                                   */
 /*    Author:       NMS_RP                                                    */
-/*    Created:      17 Dec 2019                                               */
+/*    Created:      03 Dec 2019                                               */
 /*    Description:  15-Second Autonomous Routines                             */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
-//------------------------------------------------------------------------------
-//
-// Red Alliance Autonomous Routines
-//
-//------------------------------------------------------------------------------
 
+/**	--- Red Alliance Autonomous Routines ---
+  *
+  *	Red 1 Alliance Routine: [ Description ]
+  *	Red 2 Alliance Routine: [ Description ]
+  *	Red 3 Alliance Routine: [ Description ]
+  *	Red 4 Alliance Routine: [ Description ]
+  *
+  */
 void Auton_Red01() {
   // enter Red Auton #1 code here...
 }
@@ -30,12 +33,14 @@ void Auton_Red04() {
 }
 
 
-//------------------------------------------------------------------------------
-//
-// Blue Alliance Autonomous Routines
-//
-//------------------------------------------------------------------------------
-
+/**	--- Blue Alliance Autonomous Routines ---
+  *
+  *	Blue 1 Alliance Routine: [ Description ]
+  *	Blue 2 Alliance Routine: [ Description ]
+  *	Blue 3 Alliance Routine: [ Description ]
+  *	Blue 4 Alliance Routine: [ Description ]
+  *
+  */
 void Auton_Blue01() {
   // enter Blue Auton #1 code here...
 }
@@ -53,15 +58,15 @@ void Auton_Blue04() {
 }
 
 
-//------------------------------------------------------------------------------
+/////////////////////////////////////////////////////
 //
-// Alliance Autonomous Routines Selector
+// --- Alliance Autonomous Routines Selector ---
 //
-//------------------------------------------------------------------------------
+/////////////////////////////////////////////////////
 
 std::string autonRoutines[] = { "Red01", "Red02", "Red03", "Red04", "Blue01", "Blue02", "Blue03", "Blue04" };
 void goAuton(int autonomousSelection) {
-    switch(autonomousSelection) {
+    switch( autonomousSelection ) {
         default: case 0:
             // Auton Red01 Selected
             Brain.Screen.printAt( 60, 125, "Auton Red01 Selected ");
