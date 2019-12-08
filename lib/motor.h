@@ -11,15 +11,16 @@
 
 // VEX V5 C++ Project
 #include "util.h"
-#include <cmath>
-#include <cstdlib>
+#include "vex.h"
+// #include <cmath>
+// #include <cstdlib>
 
 
 // Stores motor targets
-int motorTarget[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-int motorSlew[10] = { 10, 50, 50, 10, 10, 10, 10, 50, 50, 10 };
-int motorSlewLastSet[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-int motorDeadband[10] = { 15, 15, 15, 15, 15, 15, 15, 15, 15, 15 };
+int motorTarget[10] = 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+int motorSlew[10] = 		{ 10, 50, 50, 10, 10, 10, 10, 50, 50, 10 };
+int motorSlewLastSet[10] = 	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+int motorDeadband[10] = 	{ 15, 15, 15, 15, 15, 15, 15, 15, 15, 15 };
 
 // motors speed table
 static const char* speedTable[120] = {
@@ -41,7 +42,7 @@ static const char* speedTable[120] = {
 
 void motorHandle(){
     int outs[10];                                // Stores intermediate output values
-    double motorCurrent = vex::motor.Temp;       // Temp variable used for slew rate
+    double motorCurrent = motor.Temp;       	 // Temp variable used for slew rate
    
     // Loop through each motor slot
     for(int i = 0; i < 10; i++) {
@@ -67,5 +68,6 @@ void motorHandle(){
 
         // 4. Set Motor
         motor[i] = outs[i];
+		motor.spin(directionType::fwd, motor[i], velocityUnits::pct);
     }
 }

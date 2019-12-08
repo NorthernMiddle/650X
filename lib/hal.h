@@ -1,9 +1,9 @@
-*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       hal.h                                                     */
 /*    Author:       NMS_RP                                                    */
-/*    Created:      Mon 18 Nov 2019                                           */
-/*    Description:  Hardware Abstraction layer, abstacts motors &             */
+/*    Created:      8 Dec 2019                                                */
+/*    Description:  Hardware Abstraction layer. Abstacts motors &             */
 /*                  sensors into a set of accessor functions                  */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
@@ -27,7 +27,69 @@
 using namespace vex;
 */
 
+/*----------------------------------------------------------------------------*/
+// define the motor groups
+// the motors should have been setup with correct the gear cartridge ratios
+// and the reverse flag set as necessary so they rotate in the correct direction
+// when commanded to more forwards
 
+// left hand side of the robot has two motors
+   motor_group   leftDrive( LBmotor, LFmotor );
+
+// right hand side of the robot has two motors
+   motor_group   rightDrive( RBmotor, RFmotor );
+
+/*----------------------------------------------------------------------------*/
+// define the drivetrain
+// this one is a smart drive which uses the gyro
+// gyro and all motors were defined using graphical config
+// we have 4 inch wheels
+// drive is 16 inches wide between the wheels
+// drive has a 16 inch wheelbase (between front and back wheel axles)
+//
+// smartdrive    robotDrive( leftDrive, rightDrive, GyroA, 12.56, 16, 16, distanceUnits::in );
+// this is how the above definition would be if no gyro is used
+// drivetrain    robotDrive( leftDrive, rightDrive, 12.56, 16, 16, distanceUnits::in );
+
+
+/*----------------------------------------------------------------------------*/
+
+/* A task that just displays motor velocity and position
+// The motors that are part of a motor group and/or drivetrain can still be accessed
+// directly.
+//
+int displayTask() {
+    while(1) {
+      // display some useful info
+      Brain.Screen.setCursor(2,1);
+      Brain.Screen.print( "  LBmotor    speed: %4.0f   position: %6.2f", LBmotor.velocity( percent ), LBmotor.position( rev ) );
+      Brain.Screen.newLine();
+      Brain.Screen.print( "  LFmotor    speed: %4.0f   position: %6.2f", LFmotor.velocity( percent ), LFmotor.position( rev ));
+      Brain.Screen.newLine();
+      Brain.Screen.print( "  RBmotor    speed: %4.0f   position: %6.2f", RBmotor.velocity( percent ), RBmotor.position( rev ));
+      Brain.Screen.newLine();
+      Brain.Screen.print( "  RFmotor    speed: %4.0f   position: %6.2f", RFmotor.velocity( percent ), RFmotor.position( rev ));
+      Brain.Screen.newLine();
+      Brain.Screen.newLine();
+
+      // motor group velocity and position is returned for the first motor in the group
+      Brain.Screen.print( "  leftDrive  speed: %4.0f   position: %6.2f", leftDrive.velocity( percent ), leftDrive.position( rev ));
+      Brain.Screen.newLine();
+      Brain.Screen.print( "  rightDrive speed: %4.0f   position: %6.2f", rightDrive.velocity( percent ), rightDrive.position( rev ));
+      Brain.Screen.newLine();
+      Brain.Screen.newLine();
+
+      // drivetrain velocity is the average of the motor velocities for left and right
+      Brain.Screen.print( "  robotDrive speed: %4.0f", robotDrive.velocity( percent ) );
+      Brain.Screen.newLine();
+
+      // no need to run this loop too quickly
+      wait( 20, timeUnits::msec );
+    }
+
+    return 0;
+}*/
+/*----------------------------------------------------------------------------*/
 
 
 // Section 1: Drive 
