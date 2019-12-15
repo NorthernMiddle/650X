@@ -1,3 +1,6 @@
+#ifndef INTAKE_H
+#define INTAKE_H
+
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       intakeMotors.h                                            */
@@ -7,15 +10,16 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
+/* --- Robot Configuration: ---
 // [Name]               [Type]        [Port(s)]
 // L_Intake             Green Motor   1               
-// R_Intake             Green Motor   10                                   
-// ---- END VEXCODE CONFIGURED DEVICES ----
+// R_Intake             Green Motor   10    
+// ---------------------------- */
+
 
 // VEX V5 C++ Project
 #include "vex.h"
+using namespace vex;
 
 // local variables
 int intakeSpeedPCT = 100; 
@@ -41,3 +45,5 @@ void intakeFunc(){
     R_Intake.stop( brake );
   }
 }
+
+#endif
