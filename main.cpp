@@ -36,6 +36,7 @@
 
 // VEX V5 C++ Project
 #include "vex.h"
+#include "drive.h"
 using namespace vex;
 
 int main() {
@@ -44,12 +45,12 @@ int main() {
   while(true)
   {
     // thread for TRAY LIFT FUNCTIONS
-    thread t( TLSelection_Thread );
+    thread trayLift( TLSelection );
     /* sleep the task for a short amount of time to prevent wasted resources
        don't hog the CPU :-) */
     wait(25, msec);
     // thread for DRIVE FUNCTIONS
-    thread t( tankDrive_Thread );
+    thread drive( drive );
      /* sleep the task for a short amount of time to prevent wasted resources
         don't hog the CPU :-) */
     wait(25, msec);
