@@ -3,19 +3,19 @@
 
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
-/*   	Module:       drive.h                                                 */
-/*   	Author:       NMS_RP                                                  */
-/*   	Created:      14 Dec 2019                                             */
-/*  	Description:  tank and arcade drive (left & right joystick options)   */
+/*   	Module:       drive.h                                                   */
+/*   	Author:       NMS_RP                                                    */
+/*   	Created:      14 Dec 2019                                               */
+/*  	 Description:  tank and arcade drive (left & right joystick options)     */
 /*                     with deadband and cubic power input for VEX V5         */
 /*                                                                            */
-/* 		Robot Configuration:												  */	
-/* 		[Name]		[Description]			[Type]        	[Port(s)]		  */
-/* 		LBmotor  	Left  Rear  Motor       Green Motor   	2             	  */ 
-/* 		LFmotor  	Left  Front Motor       Green Motor   	1              	  */
-/* 		RBmotor  	Right Rear  Motor       Green Motor   	10                */
-/* 		RFmotor  	Right Front Motor       Green Motor   	9                 */
-/*																			  */
+/* 		Robot Configuration:												                                         */	
+/* 		[Name]		[Description]			[Type]        	[Port(s)]		                       */
+/* 		LBmotor  	Left  Rear  Motor       Green Motor   	2             	         */ 
+/* 		LFmotor  	Left  Front Motor       Green Motor   	1              	        */
+/* 		RBmotor  	Right Rear  Motor       Green Motor   	10                      */
+/* 		RFmotor  	Right Front Motor       Green Motor   	9                       */
+/*																			                                                         */
 /*----------------------------------------------------------------------------*/
 
 // VEX V5 C++ Project
@@ -24,23 +24,14 @@ using namespace vex;
 
 controller Controller1 = Controller(ControllerType::Primary);
 
-// Variable Declarations
-const int deadband;
-int fwdBck_pct_left, fwdBck_pct_right;		// tank drive vars
-double drive_lval, drive_rval;				// tank drive vars
-int forward_pct_leftjoy, turn_pct_leftjoy;	// arcade drive left joystick deadband vars
-double drive_l_leftjoy, drive_r_leftjoy;	// arcade drive left joystick drive vars	
-int	forward_pct_rightjoy, turn_pct_rightjoy	// arcade drive right joystick deadband vars
-double drive_l_rightjoy, drive_r_rightjoy;	// arcade drive right joystick drive vars
-
 // deadband threshold
-deadband = 15; 
+const int deadband = 15; 
 
 // tank drive --- variable intializations
-fwdBck_pct_left = Controller1.Axis3.position();
-fwdBck_pct_right = Controller1.Axis2.position();
-drive_lval = Controller1.Axis3.value();
-drive_rval = Controller1.Axis2.value();
+int fwdBck_pct_left = Controller1.Axis3.position();
+int fwdBck_pct_right = Controller1.Axis2.position();
+double drive_lval = Controller1.Axis3.value();
+double drive_rval = Controller1.Axis2.value();
 
 /** Cubic Scale Factor for Tank Drive Power
   * Functions used to achieve more sensitivity at low motor power
@@ -62,19 +53,18 @@ int cube_drive_rval(int drive_rval){				// tank drive cube scale factor
   * right joystick variable intializations
   * - deadband variables intializations
   * - drive variables intializations
-  *
   */
 /* --- LEFT JOYSTICK --- */
-forward_pct_leftjoy = Controller1.Axis3.position();
-turn_pct_leftjoy = Controller1.Axis4.position();
-drive_l_leftjoy = forward_pct_leftjoy + turn_pct_leftjoy;   // left '+'
-drive_r_leftjoy = forward_pct_leftjoy - turn_pct_leftjoy;   // right '-'
+int forward_pct_leftjoy = Controller1.Axis3.position();
+int turn_pct_leftjoy = Controller1.Axis4.position();
+double drive_l_leftjoy = forward_pct_leftjoy + turn_pct_leftjoy;   // left '+'
+double drive_r_leftjoy = forward_pct_leftjoy - turn_pct_leftjoy;   // right '-'
 
 /* --- RIGHT JOYSTICK --- */
-forward_pct_rightjoy = Controller1.Axis2.position();
-turn_pct_rightjoy = Controller1.Axis1.position();
-drive_l_rightjoy = forward_pct_rightjoy + turn_pct_rightjoy;   // left '+'
-drive_r_rightjoy = forward_pct_rightjoy - turn_pct_rightjoy;   // right '-'
+int forward_pct_rightjoy = Controller1.Axis2.position();
+int turn_pct_rightjoy = Controller1.Axis1.position();
+double drive_l_rightjoy = forward_pct_rightjoy + turn_pct_rightjoy;   // left '+'
+double drive_r_rightjoy = forward_pct_rightjoy - turn_pct_rightjoy;   // right '-'
 
 
 /** Cubic Scale Factor for Arcade Drive Power
