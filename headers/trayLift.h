@@ -1,3 +1,6 @@
+#ifndef TRAYLIFT_H
+#define TRAYLIFT_H
+
 #include "vex.h"
 
 // traylift speed variable
@@ -25,29 +28,25 @@ void trayLiftSpinDown(){
 // declare state variable for tray lift
 bool manual_mode = true;          
 
-int TLSelection_Thread(){
-  
-  int count = 0;
-  while(true){
-
+void TLSelection(){
   // Manual: Tray Up by ButtonR1
-  if((( manual_mode == true ) && (( con.ButtonR1.pressing()) == true )))
+  if((( manual_mode == true ) && (( Controller1.ButtonR1.pressing()) == true )))
   manual_mode = true;
-  while(( manual_mode == true ) && (( con.ButtonR1.pressing() == true))){
+  while(( manual_mode == true ) && (( Controller1.ButtonR1.pressing() == true))){
     trayLiftSpinUp();}
     TrayLiftmotor.stop( brakeType::brake );
     manual_mode = true;
   
   // Manual: Tray Down by ButtonR2 with Hard Stop by Limit Switch   
-  if(( manual_mode == true ) && ((con.ButtonR2.pressing()) == true ))
+  if(( manual_mode == true ) && ((Controller1.ButtonR2.pressing()) == true ))
     manual_mode = true;
-    while(( manual_mode == true ) && ( con.ButtonR2.pressing() == true ) && 
+    while(( manual_mode == true ) && ( Controller1.ButtonR2.pressing() == true ) && 
     ( TrayLiftlimit.pressing() == false )){ trayLiftSpinDown(); }
     TrayLiftmotor.stop( brakeType::brake );
     manual_mode = true;
   
   // Automatic: Tray Down Return by ButtonDown Press with Hard Stop by Limit Switch
-  if((con.ButtonDown.pressing()) == true )
+  if(( Controller1.ButtonDown.pressing()) == true )
     manual_mode = false;
     while(( manual_mode == false ) && (( TrayLiftlimit.pressing()) == false )){
     trayLiftSpinDown(); }
@@ -56,8 +55,8 @@ int TLSelection_Thread(){
 	
 	// Allow other tasks to run
   // don't hog the cpu :)
-  vex::this_thread::sleep_for( 25 );
-
-  }
-  return(0);
+  vex::this_thread::sleep_for( 10 );
 }
+
+#endif TRAYLIFT_H
+
