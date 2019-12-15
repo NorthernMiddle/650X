@@ -35,7 +35,7 @@ int trayLift_t(){
  while(true){
   Brain.Screen.printAt( 10, 60, "Task %d", trayLiftCount++);
   // Lift Selection
-  TLselection();
+  trayLift);
   
   // don't hog the cpu :)
    vex::this_thread::sleep_for( 25 );
