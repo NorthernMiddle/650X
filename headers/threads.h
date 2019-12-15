@@ -1,6 +1,7 @@
 /** --- threads.h ---
+  *
   * header file to establish thread functions to call from main
-  * @TODO: finish thread call for: drive, intake, and traylift
+  *
   */
 
 ///////////////////////////////////////////////////////////////////
