@@ -14,6 +14,9 @@ int drive_t(){
   
   while(true){
    Brain.Screen.printAt( 10, 60, "Task %d", driveCount++);
+   // drive function call
+   // Options: Tank Drive, Arcade Drive: Left Joy, Arcade Drive: Right Joy
+   tankDrive();
    
    // don't hog the cpu :)
    vex::this_thread::sleep_for( 25 );
@@ -31,6 +34,8 @@ int trayLift_t(){
  
  while(true){
   Brain.Screen.printAt( 10, 60, "Task %d", trayLiftCount++);
+  // Lift Selection
+  TLselection();
   
   // don't hog the cpu :)
    vex::this_thread::sleep_for( 25 );
@@ -48,6 +53,8 @@ int intake_t(){
  
  while(true){
   Brain.Screen.printAt( 10, 60, "Task %d", intakeCount++);
+  // Function Call
+  intake();
   
    // don't hog the cpu :)
    vex::this_thread::sleep_for( 25 );
