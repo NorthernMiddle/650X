@@ -1,22 +1,22 @@
 #ifndef DRIVE_H
 #define DRIVE_H
 
-/*----------------------------------------------------------------------------*/
-/*                                                                            */
-/*   	Module:       drive.h                                                   */
-/*   	Author:       NMS_RP                                                    */
-/*   	Created:      14 Dec 2019                                               */
-/*  	Description:  tank and arcade drive (left & right joystick options)     */
-/*                     with deadband and cubic power input for VEX V5         */
-/*                                                                            */
-/* 		Robot Configuration:												                                         */	
-/* 		[Name]		[Description]			[Type]        	[Port(s)]		                       */
-/* 		LBmotor  	Left  Rear  Motor       Green Motor   	2             	         */ 
-/* 		LFmotor  	Left  Front Motor       Green Motor   	1              	        */
-/* 		RBmotor  	Right Rear  Motor       Green Motor   	10                      */
-/* 		RFmotor  	Right Front Motor       Green Motor   	9                       */
-/*																			                                                         */
-/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------*/
+/*                                                                                        */
+/*   	Module:       drive.h                                                               */
+/*   	Author:       NMS_RP                                                                */
+/*   	Created:      14 Dec 2019                                                           */
+/*  	Description:  tank and arcade drive (left & right joystick options)                  */
+/*                     with deadband and cubic power input for VEX V5                     */
+/*                                                                                        */
+/* 		Robot Configuration:												                                                     */	
+/* 		[Name]		  [Type]        	[Port(s)]		                                                 */
+/* 		LBmotor   Green Motor   	2             	                                             */ 
+/* 		LFmotor  	Green Motor   	1              	                                            */
+/* 		RBmotor  	Green Motor   	10                                                          */
+/* 		RFmotor  	Green Motor   	9                                                           */
+/*																			                                                                     */
+/*----------------------------------------------------------------------------------------*/
 
 // VEX V5 C++ Project
 #include "vex.h"
