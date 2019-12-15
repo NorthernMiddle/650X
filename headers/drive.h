@@ -6,7 +6,7 @@
 /*   	Module:       drive.h                                                   */
 /*   	Author:       NMS_RP                                                    */
 /*   	Created:      14 Dec 2019                                               */
-/*  	 Description:  tank and arcade drive (left & right joystick options)     */
+/*  	Description:  tank and arcade drive (left & right joystick options)     */
 /*                     with deadband and cubic power input for VEX V5         */
 /*                                                                            */
 /* 		Robot Configuration:												                                         */	
