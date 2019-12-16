@@ -22,7 +22,7 @@
 #include "vex.h"
 using namespace vex;
 
-controller Controller1 = Controller(ControllerType::Primary);
+// controller Controller1 = Controller(ControllerType::Primary);
 
 // deadband threshold
 const int deadband = 15; 
