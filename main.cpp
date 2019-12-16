@@ -48,7 +48,7 @@ int main() {
   while(true)
   {
     // thread TRAY LIFT
-    thread trayLift( TLSelection );
+    drive_t();
     /* sleep the task for a short amount of time to prevent wasted resources
        don't hog the CPU :-) */
     wait(25, msec);
