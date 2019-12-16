@@ -47,20 +47,23 @@ int main() {
   vexcodeInit();
   while(true)
   {
-    // thread TRAY LIFT
-    drive_t();
-    /* sleep the task for a short amount of time to prevent wasted resources
-       don't hog the CPU :-) */
-    wait(25, msec);
-    
     // thread DRIVE
-    thread drive( drive );
+    drive_t();
      /* sleep the task for a short amount of time to prevent wasted resources
         don't hog the CPU :-) */
     wait(25, msec);
     
+    // thread TRAY LIFT
+    trayLift_t();
+    /* sleep the task for a short amount of time to prevent wasted resources
+       don't hog the CPU :-) */
+    wait(25, msec);
+    
     // thread INTAKE
-    thread
+   intake_t();
+    /* sleep the task for a short amount of time to prevent wasted resources
+       don't hog the CPU :-) */
+    wait(25, msec);
     
   }
 }
