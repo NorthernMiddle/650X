@@ -1,5 +1,3 @@
-#include "vex.hpp"
-
 // traylift speed variable
 int trayLiftSpeedPCT = 100;       
 
