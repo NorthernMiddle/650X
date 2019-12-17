@@ -41,18 +41,6 @@ int cube_drive_r_rightjoy(int drive_r_rightjoy){			// arcade drive cube scale fa
 ///////////////////////////////////////////////////////////////
 
 /**
-  * module: ARCADE DRIVE: LEFT JOYSTICK
-  * @PARAM: Left Side   ( Axis3 + Axis4 )
-  * @PARAM: Right Side  ( Axis3 - Axis4 )
-  * @TODO:
-  *
-  */
-void arcadeDrive_leftJoy(){
-  // DEADBAND, set to 0 if below the deadband threshold
-
-
-
-/**
   * module: ARCADE DRIVE: RIGHT JOYSTICK
   * @PARAM: Left Side   ( Axis2 + Axis1 )
   * @PARAM: Right Side  ( Axis2 - Axis1 )
@@ -64,7 +52,7 @@ void arcadeDrive_rightJoy(){
   if( abs( forward_pct_rightjoy ) < deadband ) forward_pct_rightjoy = 0;
   if( abs( turn_pct_rightjoy    ) < deadband ) turn_pct_rightjoy = 0;
 
-  // send to motors
+  /* --- send to motors --- */
   // left arcade motors
   LFmotor.spin( forward, cube_drive_l_rightjoy, velocityUnits::pct );
   LBmotor.spin( forward, cube_drive_l_rightjoy, velocityUnits::pct );
