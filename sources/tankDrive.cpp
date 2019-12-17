@@ -48,6 +48,12 @@ int cube_drive_rval(int drive_rval){				// tank drive cube scale factor
   *
   */
 int tankDrive(){
+ int count = 0;
+ while(true){
+  Brain.Screen.setCursor(1,1);
+  Brain.ScreenPrint("TankDrive has iterated %d times", count);
+  count++;
+  
   // deadband, set to 0 if below the deadband value
   if( abs( fwdBck_pct_left  ) < deadband ) fwdBck_pct_left  = 0;
   if( abs( fwdBck_pct_right ) < deadband ) fwdBck_pct_right = 0;
@@ -60,6 +66,12 @@ int tankDrive(){
   RFmotor.spin( forward, cube_drive_rval, velocityUnits::pct );
   RBmotor.spin( forward, cube_drive_rval, velocityUnits::pct );
 
-  // allow other tasks to run
-  this_thread::sleep_for( 10 );
+  /* You must sleep threads by using the 'this_thread::sleep_for(unit in
+     msec)' command to prevent this thread from using all of the CPU's
+     resources. */
+  this_thread::sleep_for( 25 );
+}
+/* A threads's callback must return an int, even though the code will never
+   get here. You must return an int here. Threads can exit, but this one does not. */
+return 0;
 }
