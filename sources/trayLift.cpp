@@ -5,7 +5,7 @@ int trayLiftSpeedPCT = 100;
 
 /** 	--- Tray Movement Shortend Function Call Setup ---
    *  tray lift up:     	cmd runs tray lift up manually by pressing of Button R1 (Manual Operation)
-   *  tray lift down:  	  cmd runs tray lift down manually by pressing of Button R2 (Manual Operation)
+   *  tray lift down:  	  	cmd runs tray lift down manually by pressing of Button R2 (Manual Operation)
    *  tray lift reset:  	cmd runs tray lift down from BUTTONDOWN press till limit switch is triggered (Automatic Reset)
    */
 void trayLiftSpinUp(){
