@@ -1,7 +1,8 @@
 /**
- * hal.c - Hardware Abstraction layer, abstacts motors & sensors into a set of accessor functions
- * 
- * borrowed from brandon
+ * --- hal.cpp ---
+ * Module: Hardware Abstraction Layer
+ * Description: abstacts motors & sensors into a set of accessor functions
+ * Author: Brandon McGuire aka "Mayor Monty"
  *
  * @TODO: clean up
  * @TODO: convert from *.c to *.cpp
