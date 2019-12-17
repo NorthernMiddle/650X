@@ -1,0 +1,5 @@
+#ifndef ARCADEDRIVELEFTJOY_H
+#define ARCADEDRIVELEFTJOY_H
+
+
+#endif
