@@ -1,8 +1,7 @@
 /**
- * state.cpp - 
+ * --- state.cpp ---- 
  *
- * borrowed from brendan
- * @TODO: convert from *.c to *.cpp
+ * adapted from Brandon McGuire aka "Mayor Monty"
  */
 
 // ---------------------------------------------------------------------------------------
