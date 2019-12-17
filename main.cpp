@@ -36,10 +36,9 @@
 
 // VEX V5 C++ Project
 #include "vex.h"
-#include "drive.h"
+#include "tankDrive.h"
 #include "trayLift.h"
 #include "intake.h"
-#include "threads.h"
 using namespace vex;
 
 int main() {
@@ -48,19 +47,19 @@ int main() {
   while(true)
   {
     // thread DRIVE
-    drive_t();
+    THREAD drive(tankDrive);
      /* sleep the task for a short amount of time to prevent wasted resources
         don't hog the CPU :-) */
     wait(25, msec);
     
     // thread TRAY LIFT
-    trayLift_t();
+    THREAD lift(trayLift);
     /* sleep the task for a short amount of time to prevent wasted resources
        don't hog the CPU :-) */
     wait(25, msec);
     
     // thread INTAKE
-   intake_t();
+   THREAD spinners(intake);
     /* sleep the task for a short amount of time to prevent wasted resources
        don't hog the CPU :-) */
     wait(25, msec);
