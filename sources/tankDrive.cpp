@@ -14,7 +14,7 @@ using namespace vex;
 // deadband threshold
 const int deadband = 15; 
 
-// tank drive --- variable intializations
+// tank drive func --- variable intializations
 int fwdBck_pct_left = Controller1.Axis3.position();     // used for deadband monitoring
 int fwdBck_pct_right = Controller1.Axis2.position();    // used for deadband monitoring
 double drive_lval = Controller1.Axis3.value();          // tank drive control
@@ -34,12 +34,12 @@ int cube_drive_rval(drive_rval){				// tank drive cube scale factor right joy
 }
 
 /**
-  * --- tankDrive callback function ---
+  * --- tankDrive_f is a callback function ---
   * func to be registered to a thread
-  * func registered to 
+  * func registered to tankdrive_t
   *
   */
-int tankDrive(){
+int tankDrive_f(){
  int count = 0;
  while(true){
   Brain.Screen.setCursor(1,1);
