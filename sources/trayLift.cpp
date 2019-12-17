@@ -1,3 +1,12 @@
+/*----------------------------------------------------------------------------------------*/
+/*                                                                                        */
+/*   	Module:       trayLift.cpp                                                        */
+/*   	Author:       NMS_RP                                                               */
+/*   	Created:      16 Dec 2019                                                          */
+/*  	Description:  Lift Func for Cube Tray - Tower Takeover           		*/
+/*                                                                                        */
+/*----------------------------------------------------------------------------------------*/
+
 // traylift speed variable
 int trayLiftSpeedPCT = 100;       
 
@@ -7,11 +16,11 @@ int trayLiftSpeedPCT = 100;
    *  tray lift reset:  	cmd runs tray lift down from BUTTONDOWN press till limit switch is triggered (Automatic Reset)
    */
 void trayLiftSpinUp(){
-  TrayLiftmotor.spin( reverse, trayLiftSpeedPCT, velocityUnits::pct );
+  TL.spin( reverse, trayLiftSpeedPCT, velocityUnits::pct );
 }
 
 void trayLiftSpinDown(){
-  TrayLiftmotor.spin( forward, trayLiftSpeedPCT, velocityUnits::pct );
+  TLmotor.spin( forward, trayLiftSpeedPCT, velocityUnits::pct );
 }
 
 ///////////////////////////////////////////////////
@@ -29,7 +38,7 @@ void TLSelection(){
   manual_mode = true;
   while(( manual_mode == true ) && (( Controller1.ButtonR1.pressing() == true))){
     trayLiftSpinUp();}
-    TrayLiftmotor.stop( brakeType::brake );
+    TLmotor.stop( brakeType::brake );
     manual_mode = true;
   
   // Manual: Tray Down by ButtonR2 with Hard Stop by Limit Switch   
@@ -37,7 +46,7 @@ void TLSelection(){
     manual_mode = true;
     while(( manual_mode == true ) && ( Controller1.ButtonR2.pressing() == true ) && 
     ( TrayLiftlimit.pressing() == false )){ trayLiftSpinDown(); }
-    TrayLiftmotor.stop( brakeType::brake );
+    TLmotor.stop( brakeType::brake );
     manual_mode = true;
   
   // Automatic: Tray Down Return by ButtonDown Press with Hard Stop by Limit Switch
@@ -45,7 +54,7 @@ void TLSelection(){
     manual_mode = false;
     while(( manual_mode == false ) && (( TrayLiftlimit.pressing()) == false )){
     trayLiftSpinDown(); }
-    TrayLiftmotor.stop( brakeType::brake );
+    TLmotor.stop( brakeType::brake );
     manual_mode = true;
 	
 /* Allow other tasks to run; don't hog the cpu :) */
