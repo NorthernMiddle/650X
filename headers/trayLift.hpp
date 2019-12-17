@@ -1,7 +1,7 @@
-#ifndef TRAYLIFT_H
-#define TRAYLIFT_H
+#ifndef TRAYLIFT_HPP
+#define TRAYLIFT_HPP
 
-#include "vex.h"
+#include "vex.hpp"
 
 // traylift speed variable
 int trayLiftSpeedPCT = 100;       
