@@ -3,6 +3,7 @@
 
 int cube_drive_l_leftjoy(int drive_l_leftjoy);				  // arcade drive cube scale factor left joystick control
 int cube_drive_r_leftjoyl(int drive_r_leftjoy);				  // arcade drive cube scale factor left joystick control
-
+void deadBand_Arcade();
+void arcadeDrive_leftJoy();
 
 #endif
