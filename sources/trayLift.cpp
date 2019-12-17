@@ -50,7 +50,6 @@ void TLSelection(){
     TrayLiftmotor.stop( brakeType::brake );
     manual_mode = true;
 	
-	// Allow other tasks to run
-  // don't hog the cpu :)
+/* Allow other tasks to run; don't hog the cpu :) */
   vex::this_thread::sleep_for( 10 );
 }
