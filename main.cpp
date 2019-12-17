@@ -45,8 +45,8 @@ int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   
-  thread tankdrive = thread(tankDrive);     // thread DRIVE
-  thread lift = thread(trayLift);           // thread TRAY LIFT
-  thread spinners = thread(intake);         // thread INTAKE
+  thread tankdrive_t = thread(tankDrive_f);     // thread DRIVE
+  thread lift_t = thread(trayLift_f);           // thread TRAY LIFT
+  thread spinners_t = thread(intake_f);         // thread INTAKE
   
 }
