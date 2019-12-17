@@ -20,30 +20,48 @@ int fwdBck_pct_right = Controller1.Axis2.position();    // used for deadband mon
 double drive_lval = Controller1.Axis3.value();          // tank drive control
 double drive_rval = Controller1.Axis2.value();          // tank drive control
 
+
+// type conversions funcs and call
+int input_lval(double drive_lval){
+  return ceil(drive_lval);
+}
+int input_rval(double drive_rval){
+  return ceil(drive_rval);
+}
+
+int arg1 = input_lval(drive_lval);
+int arg2 = input_rval(drive_rval);
+
+
 /** 
   * --- Cubic Scale Factor --- 
   * Description: Functions used to achieve more sensitivity at low motor power
   *              used for precise movements while still being able to use 100% power
   *
   */
-int cube_drive_lval(drive_lval){				// tank drive cube scale factor left joy
-    return  pow(drive_lval/100.0, 3.0)*100.0;
+int cube_drive_lval(int arg1){				// tank drive cube scale factor left joy
+    return  pow(arg1/100.0, 3.0)*100.0;
 }
-int cube_drive_rval(drive_rval){				// tank drive cube scale factor right joy
-    return  pow(drive_rval/100.0, 3.0)*100.0;
+int cube_drive_rval( int arg2 ){				// tank drive cube scale factor right joy
+    return  pow(arg2/100.0, 3.0)*100.0;
 }
+
+double arg3 = (1.0 *(cube_drive_lval(arg1)));
+double arg4 = (1.0 * (cube_drive_rval(arg2)));
+
+
 
 /**
   * --- tankDrive_f is a callback function ---
   * func to be registered to a thread
-  * func registered to tankdrive_t
+  * func registered to thread tankdrive_t
   *
   */
 int tankDrive_f(){
  int count = 0;
  while(true){
   Brain.Screen.setCursor(1,1);
-  Brain.ScreenPrint("TankDrive has iterated %d times", count);
+  Brain.Screen.print("TankDrive has iterated %d times", count);
   count++;
   
   // deadband, set to 0 if below the deadband value
@@ -52,11 +70,11 @@ int tankDrive_f(){
  
   /* --- send to motors --- */
   // left tank motors
-  LFmotor.spin( forward, cube_drive_lval, velocityUnits::pct );
-  LBmotor.spin( forward, cube_drive_lval, velocityUnits::pct );
+  LFmotor.spin( directionType::fwd, arg3, velocityUnits::pct );
+  LBmotor.spin( directionType::fwd, arg3, velocityUnits::pct );
   // right tank motors
-  RFmotor.spin( forward, cube_drive_rval, velocityUnits::pct );
-  RBmotor.spin( forward, cube_drive_rval, velocityUnits::pct );
+  RFmotor.spin( directionType::fwd, arg4, velocityUnits::pct );
+  RBmotor.spin( directionType::fwd, arg4, velocityUnits::pct );
 
   /* You must sleep threads by using the 'this_thread::sleep_for(unit in
      msec)' command to prevent this thread from using all of the CPU's
