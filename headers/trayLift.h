@@ -1,5 +1,5 @@
-#ifndef TRAYLIFT_HPP
-#define TRAYLIFT_HPP
+#ifndef TRAYLIFT_H
+#define TRAYLIFT_H
 
 void trayLiftSpinUp();
 void trayLiftSpinDown();     
