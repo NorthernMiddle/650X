@@ -6,8 +6,7 @@ int cube_drive_rval(int drive_rval);    // tank drive cube scale factor
 void deadBand_Tank();
 void tankDrive();
 
-int cube_drive_l_leftjoy(int drive_l_leftjoy);				  // arcade drive cube scale factor left joystick control
-int cube_drive_r_leftjoyl(int drive_r_leftjoy);				 // arcade drive cube scale factor left joystick control
+
 int cube_drive_l_rightjoy(int drive_l_rightjoy);			 // arcade drive cube scale factor right joystick control
 int cube_drive_r_rightjoyl(int drive_r_rightjoy);			// arcade drive cube scale factor right joystick control
 void deadBand_Arcade();
