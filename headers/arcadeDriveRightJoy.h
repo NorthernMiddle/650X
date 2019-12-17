@@ -1,0 +1,4 @@
+#ifndef ARCADEDRIVERIGHTJOY_H
+#define ARCADEDRIVERIGHTJOY_H
+
+#endif
