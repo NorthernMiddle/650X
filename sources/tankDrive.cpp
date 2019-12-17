@@ -7,6 +7,7 @@
 /*                                                                                        */
 /*----------------------------------------------------------------------------------------*/
 
+// VEX V5 C++ Project
 #include "vex.h"
 using namespace vex;
 
@@ -14,13 +15,10 @@ using namespace vex;
 const int deadband = 15; 
 
 // tank drive --- variable intializations
-int fwdBck_pct_left = Controller1.Axis3.position();
-int fwdBck_pct_right = Controller1.Axis2.position();
-double drive_lval = Controller1.Axis3.value();
-double drive_rval = Controller1.Axis2.value();
-
-
-
+int fwdBck_pct_left = Controller1.Axis3.position();     // used for deadband monitoring
+int fwdBck_pct_right = Controller1.Axis2.position();    // used for deadband monitoring
+double drive_lval = Controller1.Axis3.value();          // tank drive control
+double drive_rval = Controller1.Axis2.value();          // tank drive control
 
 /** 
   * --- Cubic Scale Factor --- 
@@ -28,23 +26,17 @@ double drive_rval = Controller1.Axis2.value();
   *              used for precise movements while still being able to use 100% power
   *
   */
-int cube_drive_lval(int drive_lval){				// tank drive cube scale factor
+int cube_drive_lval(int drive_lval){				// tank drive cube scale factor left joy
     return  pow(drive_lval/100.0, 3.0)*100.0;
 }
-int cube_drive_rval(int drive_rval){				// tank drive cube scale factor
+int cube_drive_rval(int drive_rval){				// tank drive cube scale factor right joy
     return  pow(drive_rval/100.0, 3.0)*100.0;
 }
 
-///////////////////////////////////////////////////////////////
-//
-//  --- Tank Drive with Deadband and Cubic Power Input ---
-//
-///////////////////////////////////////////////////////////////
 /**
-  * module: tank drive
-  * @PARAM: Axis3 Left Side Motors
-  * @PARAM: Axis2 Right Side Motors
-  * @TODO:
+  * --- tankDrive callback function ---
+  * func to be registered to a thread
+  * func registered to 
   *
   */
 int tankDrive(){
