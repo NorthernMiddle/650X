@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------------------------------*/
 /*                                                                                        */
-/*   	Module:       tankDrive.cpp                                                         */
-/*   	Author:       NMS_RP                                                                */
-/*   	Created:      16 Dec 2019                                                           */
-/*  	Description:  tank drive with deadband and cubic power input for VEX V5             */
+/*   	Module:       tankDrive.cpp                                                        */
+/*   	Author:       NMS_RP                                                               */
+/*   	Created:      16 Dec 2019                                                          */
+/*  	Description:  tank drive with deadband and cubic power input for VEX V5            */
 /*                                                                                        */
 /*----------------------------------------------------------------------------------------*/
 
