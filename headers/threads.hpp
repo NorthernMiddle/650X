@@ -1,4 +1,4 @@
-/** --- threads.h ---
+/** --- threads.hpp ---
   *
   * header file to establish thread functions to call from main
   *
