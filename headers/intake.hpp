@@ -3,7 +3,7 @@
 
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
-/*    Module:       intakeMotors.h                                            */
+/*    Module:       intakeMotors.hpp                                            */
 /*    Author:       NMS_RP                                                    */
 /*    Created:      Thur Oct 24 2019                                          */
 /*    Description:  Intake Spinners Motor Control                             */
@@ -18,7 +18,7 @@
 
 
 // VEX V5 C++ Project
-#include "vex.h"
+#include "vex.hpp"
 using namespace vex;
 
 // local variables
