@@ -26,10 +26,10 @@ double drive_rval = Controller1.Axis2.value();          // tank drive control
   *              used for precise movements while still being able to use 100% power
   *
   */
-int cube_drive_lval(int drive_lval){				// tank drive cube scale factor left joy
+int cube_drive_lval(drive_lval){				// tank drive cube scale factor left joy
     return  pow(drive_lval/100.0, 3.0)*100.0;
 }
-int cube_drive_rval(int drive_rval){				// tank drive cube scale factor right joy
+int cube_drive_rval(drive_rval){				// tank drive cube scale factor right joy
     return  pow(drive_rval/100.0, 3.0)*100.0;
 }
 
