@@ -44,25 +44,10 @@ using namespace vex;
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-  while(true)
-  {
-    // thread DRIVE
-    THREAD drive(tankDrive);
-     /* sleep the task for a short amount of time to prevent wasted resources
-        don't hog the CPU :-) */
-    wait(25, msec);
-    
-    // thread TRAY LIFT
-    THREAD lift(trayLift);
-    /* sleep the task for a short amount of time to prevent wasted resources
-       don't hog the CPU :-) */
-    wait(25, msec);
-    
-    // thread INTAKE
-   THREAD spinners(intake);
-    /* sleep the task for a short amount of time to prevent wasted resources
-       don't hog the CPU :-) */
-    wait(25, msec);
-    
+  
+  thread tankdrive = thread(tankDrive);     // thread DRIVE
+  thread lift = thread(trayLift);           // thread TRAY LIFT
+  thread spinners = thread(intake);         // thread INTAKE
+  
   }
 }
