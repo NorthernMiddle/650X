@@ -150,27 +150,27 @@ void traySet(int value) {
     motorTarget[port8] = value;
 }
 
-void mogoHandle() {
-    if(robot.mogo == UP && SensorValue[mogoLeft] > 150) {
-        mogoSet(100);
-    } else if (robot.mogo == DOWN && SensorValue[mogoLeft] < 2400) {
-        mogoSet(-100);
+void trayHandle() {
+    if(robot.tray == UP && SensorValue[TLmotor] > 150) {
+        traySet(100);
+    } else if (robot.mogo == DOWN && SensorValue[TLmotor] < 2400) {
+        traySet(-100);
     } else {
-        mogoSet(0);
+        traySet(0);
     }
 }
 
-void mogoUp() {
-    robot.mogo = UP;
+void trayUp() {
+    robot.tray = UP;
 }
 void mogoDown() {
-    robot.mogo = DOWN;
+    robot.tray = DOWN;
 }
 
 
 task handleAll() {
     while(true) {
-        mogoHandle();
+        trayHandle();
         driveHandle();
         motorHandle();
         wait1Msec(20);
