@@ -49,5 +49,4 @@ int main() {
   thread lift = thread(trayLift);           // thread TRAY LIFT
   thread spinners = thread(intake);         // thread INTAKE
   
-  }
 }
