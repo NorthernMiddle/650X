@@ -6,7 +6,4 @@ int cube_drive_rval(int drive_rval);    // tank drive cube scale factor
 void deadBand_tankDrive();
 void tankDrive();
 
-
-
-
 #endif
