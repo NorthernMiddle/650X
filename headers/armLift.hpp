@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
-/*    Module:       armlift.h                                                 */
+/*    Module:       armlift.hpp                                                 */
 /*    Author:       NMS_RP                                                    */
 /*    Created:      Thurs Oct 31 2019                                         */
 /*    Description:  Arm Lift Function File for TT                             */
