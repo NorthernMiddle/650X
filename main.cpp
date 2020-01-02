@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       C:\Users\reece.turner                                     */
+/*    Author:       NMS_RP                                                    */
 /*    Created:      Fri Dec 06 2019                                           */
 /*    Description:  V5 project                                                */
 /*                                                                            */
