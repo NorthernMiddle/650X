@@ -3,7 +3,7 @@
 
 void trayLiftSpinUp();
 void trayLiftSpinDown();     
-void TLSelection();
+void trayLift_f();
   
 #endif
 
