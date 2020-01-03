@@ -1,6 +1,6 @@
 #ifndef INTAKE_H
 #define INTAKE_H
 
-void intake();
+void intake_f();
 
 #endif
