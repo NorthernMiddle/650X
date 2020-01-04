@@ -1,7 +1,8 @@
 /**
- * hal.c - Hardware Abstraction layer, abstacts motors & sensors into a set of accessor functions
- * 
- * borrowed from brandon
+ * --- hal.cpp ---
+ * Module: Hardware Abstraction Layer
+ * Description: abstacts motors & sensors into a set of accessor functions
+ * Author: Brandon McGuire aka "Mayor Monty"
  *
  * @TODO: clean up
  * @TODO: convert from *.c to *.cpp
@@ -9,11 +10,12 @@
  */
 
 // Slight crinkle in HAL philosophy, in case where more advanced motor algorithmns are being applied
-#include "motor.c"
-#include "util.c"
-#include "pid.c"
-#include "profile.c"
+#include "motor.cpp"
+#include "util.cpp"
+#include "pid.cpp"
+#include "profile.cpp"
 
+// -----------------------------------------------------------------------------
 /* Section 1: Drive */
 void drive(int left, int right) {
     robot.leftDrive = left;
@@ -58,34 +60,33 @@ void driveDistance(int inches) {
     // Stop the drive after we've completed the distance
     drive(0, 0);
 }
-
-/* Section 2: Mobile Goal Lift */
-void mogoSet(int value) {
-    motorTarget[port2] = value;
-    motorTarget[port3] = value;
+// -----------------------------------------------------------------------------
+/* Section 2: Cube Tray Lift */
+void traySet(int value) {
+    motorTarget[port8] = value;
 }
 
-void mogoHandle() {
-    if(robot.mogo == UP && SensorValue[mogoLeft] > 150) {
-        mogoSet(127);
-    } else if (robot.mogo == DOWN && SensorValue[mogoLeft] < 2400) {
-        mogoSet(-127);
+void trayHandle() {
+    if(robot.tray == UP && SensorValue[trayMotor] > 150) {
+       traySet(127);
+    } else if (robot.tray == DOWN && SensorValue[trayMotor] < 2400) {
+        traySet(-127);
     } else {
-        mogoSet(0);
+        traySet(0);
     }
 }
 
-void mogoUp() {
-    robot.mogo = UP;
+void trayUp() {
+    robot.tray = UP;
 }
-void mogoDown() {
-    robot.mogo = DOWN;
+void trayDown() {
+    robot.tray = DOWN;
 }
 
-
+// -----------------------------------------------------------------------------
 task handleAll() {
     while(true) {
-        mogoHandle();
+        trayHandle();
         driveHandle();
         motorHandle();
         wait1Msec(20);

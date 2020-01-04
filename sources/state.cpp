@@ -1,33 +1,34 @@
 /**
- * state.cpp - 
+ * --- state.cpp ---- 
  *
- * borrowed from brendan
- * @TODO: convert from *.c to *.cpp
+ * adapted from Brandon McGuire aka "Mayor Monty"
  */
 
+// ---------------------------------------------------------------------------------------
 
-typedef struct {
-    int type; // 0 = standard, 1 = driver, 2 = programming, 3 = record rerun
-    int routine; // See /routines
-	int alliance; // 0 = red, 1 = blue
-} matchState;
+struct matchState{
+	int type;	// 0 = standard, 1 = driver, 2 = programming, 3 = record rerun
+	int routine;	// See /routines
+	int alliance;	// 0 = red, 1 = blue
+} match;
 
-matchState match;
+// ---------------------------------------------------------------------------------------
 
-enum mogoState {
-    UP, DOWN
+enum trayState{
+	UP, DOWN
 };
 
-typedef struct robotState {
+// ---------------------------------------------------------------------------------------
+
+struct robotState{
     mogoState mogo;
     int leftDrive;
     int rightDrive;
-    bool driveDirect; // In autonomous, we would likely want to forgo slew rate, motion profiling will take care of its role
+    bool driveDirect; 	// In autonomous, we would likely want to forgo slew rate, motion profiling will take care of its role
 
-    bool mogoMoving;
+    bool trayMoving;
     bool driveMoving;
 
-    int debugDisplay; // Refer to debugValues() task for more information
-} robotState;
+    int debugDisplay; 	// Refer to debugValues() task for more information
+} robot;
 
-robotState robot;

@@ -2,6 +2,7 @@
  * pid.c - Implementation of Proportional Integral Derivative in ROBOTC
  * Copyright (c) 2016 Brendan McGuire. All rights reserved.
  * The code has been created for VEX 3796B "Some Assembly Required"
+ 
  * ALGORITHM:
  *  The pid algorithm is calculated as follows:
  *    u(t) = (Kp * error) + (Ki * accumulate) + (Kd * (error - last_error))

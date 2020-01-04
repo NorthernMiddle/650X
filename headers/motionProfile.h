@@ -1,3 +1,6 @@
+#ifndef MOTIONPROFILE_H
+#define MOTIONPROFILE_H
+
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       motionProfile.h                                           */
@@ -31,3 +34,5 @@ int motionProfile(int currentTicks, int targetTicks, int dvPeriod) {
     // In the strange occurance that none of the above conditions activate, eliminate the multiplier
     return 1;
 } 
+
+#endif
