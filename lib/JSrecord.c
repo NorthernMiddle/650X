@@ -9,7 +9,8 @@
 /*        Module:     	JSrecord.c                                             */
 /*        Author:     	James Pearman                                          */
 /*        Created:    	29 Oct 2011                                            */
-/*        Description:  Example code to show use of joystick recording and     */
+/*        Description:  Joy Stick Record                                       */
+/*			Example code to show use of joystick recording and     */
 /*			playback. Simple arcade control is implemented on      */
 /*			right joystick. Button 8U starts/stops recording.      */
 /*        		Button 8D starts/stops playback                        */
