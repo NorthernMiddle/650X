@@ -10,9 +10,9 @@
 /*        Author:     	James Pearman                                          */
 /*        Created:    	29 Oct 2011                                            */
 /*        Description:  Example code to show use of joystick recording and     */
-/*			                playback. Simple arcade control is implemented on      */
-/*			                right joystick. Button 8U starts/stops recording.      */                                 */
-/*        		          Button 8D starts/stops playback                        */                                              */
+/*			playback. Simple arcade control is implemented on      */
+/*			right joystick. Button 8U starts/stops recording.      */
+/*        		Button 8D starts/stops playback                        */
 /*        Revisions:  	V0.1                                                   */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
@@ -57,11 +57,8 @@ long    currentEventTime;
 /*  Initialize the array with pre ecorded data                                 */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
-void 
-initData(){
+void initData(){
     // Paste data here cut from the debug Stream window.
-
-
 
 }
 
@@ -71,8 +68,7 @@ initData(){
 /*  Convert the joystick buttons into a bitfield (well sort of)                */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
-int 
-GetButtons(){
+int GetButtons(){
     int buttons = 0;
     
     buttons |= (vexRT[ Btn7U ] == 1) ? 0x01  : 0;
@@ -98,8 +94,7 @@ GetButtons(){
 /*  Routine to add a new event to the event array                              */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
-void 
-AddEvent(){
+void AddEvent(){
 	static long     lastEventTime;
 	       int      deltaTime;
 
@@ -137,8 +132,7 @@ AddEvent(){
 /*      Max of 10 events per second                                            */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
-task 
-RecordMonitor(){
+task RecordMonitor(){
     int loopCount = 0;
 
     // Use timer 1 to track time
@@ -206,8 +200,7 @@ RecordMonitor(){
 /*	event until the end of the recorded data is reached.		       */
 /*-----------------------------------------------------------------------------*/
 
-task 
-Playback(){
+task Playback(){
     long    EventTime;
 
     currentEventTime = time1[ T1 ] = 0;
@@ -278,8 +271,7 @@ LcdStatus(){
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 
-task 
-driveMotor(){
+task driveMotor(){
     int drive1, drive2;
 
     while( true )
@@ -318,8 +310,7 @@ driveMotor(){
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 
-void 
-dumpData(){
+void dumpData(){
     int     i;
     string str;
 
