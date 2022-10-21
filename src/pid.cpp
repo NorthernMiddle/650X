@@ -47,6 +47,7 @@ typedef struct {
 
   // Last error, used for calculating derivative
   int lastError;
+	
   // The last time we did a motor check (should always be 20, since we don't have super heavy calculations)
   long lastTime;
 
@@ -55,6 +56,7 @@ typedef struct {
 
   // Total time (in ms) since last recalculating the velocity
   int deltaTime;
+	
   // Total change in ticks since last re-calculation
   int deltaCount;
 
