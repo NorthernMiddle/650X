@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       pid.h                                                     */
-/*    Author:       Brandon McGuire                                                   */
+/*    Author:       Brandon McGuire                                           */
 /*    Created:      Thurs 15 Nov 2019                                         */
 /*    Description:  Basic PID                                                 */
 /*                                                                            */
