@@ -20,8 +20,21 @@
   void deadBand_arcadeRightJoy();
   void arcadeDrive_rightJoy();
 
-#endif
+#endif // ARCADEDRIVERIGHTJOY_H
 
+/////////////////////////
+//
+// controls.h
+//
+//////////////////////////////////
+#ifndef CONTROLS_H
+#define CONTROLS_H
+
+  void tank();
+  void arcade();
+  void controls();
+
+#endif  // CONTROLS_H
 
 /////////////////////////
 //
@@ -33,7 +46,7 @@
 
   void flywheel_f();
 
-#endif
+#endif // FLYWHEEL_H
 
 
 /////////////////////////
@@ -46,7 +59,7 @@
 
   void intake_f();
 
-#endif
+#endif // INTAKE_H
 
 
 /////////////////////////
