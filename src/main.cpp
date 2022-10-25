@@ -1,10 +1,11 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       650R "Ravishers"                                          */
-/*    Created:      4 Jan 2020                                                */
-/*    Description:  Competition Template                                      */
-/*                                                                            */
+/*    Author:       LoJac10                                                   */
+/*    Created:      10/25/2022                                                */
+/*    Description:  Competition VRC Template for 650X "Xray". Template        */
+/*                  includes options to select autonomous programs using      */
+/*                  Jpearman 'buttons' module.                                */
 /*----------------------------------------------------------------------------*/
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
