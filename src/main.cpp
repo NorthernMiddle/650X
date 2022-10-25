@@ -23,6 +23,15 @@
 // Drivetrain           drivetrain    1, 2, 3, 4      
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
+// ----| START CONTROLS INFO |----
+// L1 Intake In
+// L2 Intake Out
+// R1 Indexer
+// R2 Flywheel Control
+// Tank Drive
+// ----| END CONTROLS INFO |----
+
+
 // VEX V5 C++ Project
 #include "vex.h"
 #include "auton.h"
