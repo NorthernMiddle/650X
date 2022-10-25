@@ -11,16 +11,15 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Controller1          controller      
-// TrayLiftlimit        limit         A                     
-// LFmotor              motor         1
-// LBmotor              motor         2
-// RFmotor              motor         3
-// RBmotor              motor         4   
-// TrayLiftmotor        motor         8               
-// L_Intake             motor         9               
-// R_Intake             motor         10           
-// Drivetrain           drivetrain    1, 2, 3, 4      
+// Controller1          controller                       
+// LFmotor              motor         20
+// LBmotor              motor         11
+// RFmotor              motor         10
+// RBmotor              motor         1   
+// Flywheel1            motor         8               
+// Flywheel2            motor         9               
+// Indexer              motor         7           
+// Drivetrain           drivetrain    20, 11, 10, 1      
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 // ----| START CONTROLS INFO |----
@@ -60,9 +59,9 @@ typedef struct _button
 button buttons[] = 
 {
   {   390,  20, 50, 50,  false, 0x228c22, "Straight" },
-  //{  150,  30, 60, 60,  false, 0xE00000, "RL" },
-  //{   30, 150, 50, 50,  false, 0xE00000, "RL" },
-  //{  150, 150, 50, 50,  false, 0xE00000, "RR" },
+  {  150,  30, 60, 60,  false, 0xE00000, "RL" },
+  {   30, 150, 50, 50,  false, 0xE00000, "RL" },
+  {  150, 150, 50, 50,  false, 0xE00000, "RR" },
   {  270, 100, 50, 50,  false, 0xE00000, "RL" },
   {  390, 100, 50, 50,  false, 0xE00000, "RR" },
   {  270, 180, 50, 50,  false, 0x0000E0, "BL" },
