@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
-/*    Module:       intakeMotors.h                                            */
+/*    Module:       intake.cpp                                                */
 /*    Author:       NMS_RP                                                    */
 /*    Created:      Thur Oct 24 2019                                          */
 /*    Description:  Intake Spinners Motor Control                             */
