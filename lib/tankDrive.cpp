@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
-/*    Module:       drive.cpp                                                 */
+/*    Module:       tankDrive.cpp                                                 */
 /*    Author:       NMS_RP                                                    */
 /*    Created:      01 Oct 2022                                               */
 /*    Description:  Operation control file for all driver functions           */
