@@ -30,3 +30,33 @@ void set_flywheel(int input) {
   Flywheel.spin(fwd, input * SCALE, voltageUnits::mV);
   Flywheel2.spin(fwd, input * SCALE, voltageUnits::mV);
 }
+  
+//////////
+//
+// exponential drive function
+//
+////////////////////////////////////
+  
+ #define JOYSTICK_DEADZONE 8
+
+int getExpoValue(int joystickValue)
+{
+    int output = 0;
+    // Ignore joystick input if it's too small
+    if(abs(joystickValue) > JOYSTICK_DEADZONE){
+      // Direction is either 1 or -1, based on joystick value
+      int direction = abs(joystickValue) / joystickValue;
+      // Plug joystick value into exponential function
+      output = direction * (1.2 * pow(1.0356, abs(joystickValue)) - 1.2 + 0.2 * abs(joystickValue));
+    }
+    return output;
+} 
+
+// The output is then used with whatever type of driver control layout (tank, arcade, etc.) you prefer
+// A quick example of tank drive in opControl:
+
+// Get joystick values
+int leftPower = getExpoValue(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
+int rightPower = getExpoValue(controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y));
+driveLeftMotor = leftPower;
+driveRightMotor = rightPower;  
