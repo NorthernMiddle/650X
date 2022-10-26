@@ -30,33 +30,47 @@ void arcadeDrive()
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  int getLeftMotorExpoValue(int leftMotorSpeed){
+  // get left motor expo value
+  int getLeftMotorExpoValue(int leftMotorSpeed)
+  {
     int output_leftMotors = 0;
+    
     // Get the velocity percentage of the left motor. (Axis2 + Axis1)
     int leftMotorSpeed = Con.Axis2.position() + Con.Axis1.position();
+    
     // ignore controller value if value is too small
     if(abs(leftMotorSpeed) > JOYSTICK_DEADZONE)
+      
     {
       // direction is either 1 or -1, based on controller value (cv)
       int LeftMotorDirection = abs(leftMotorSpeed) / leftMotorSpeed; 
+      
       // plug controller value into exponential function
       output_leftMotors = LeftMotorDirection * (1.2 * pow(1.0356, abs(leftMotorSpeed)) - 1.2 + 0.2 * abs(leftMotorSpeed));
     }
+    
     return output_leftMotors;
   }
 
-  int getRightMotorExpoValue(int rightMotorSpeed){
+  // get right motor expo value
+  int getRightMotorExpoValue(int rightMotorSpeed)
+  {
     int output_rightMotors = 0;
+    
     // Get the velocity percentage of the right motor. (Axis2 - Axis1)
     int rightMotorSpeed = Con.Axis2.position() - Con.Axis1.position();
+    
     // ignore controller value if value is too small
     if(abs(rightMotorSpeed) > JOYSTICK_DEADZONE)
+      
     {
       // direction is either 1 or -1, based on controller value (cv)
       int RightMotorDirection = abs(rightMotorSpeed) / rightMotorSpeed; 
+      
       // plug controller value into exponential function
       output_rightMotors = RightMotorDirection * (1.2 * pow(1.0356, abs(rightMotorSpeed)) - 1.2 + 0.2 * abs(rightMotorSpeed));
     }
+    
     return output_rightMotors;
   }
 
