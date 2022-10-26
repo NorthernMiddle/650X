@@ -24,7 +24,6 @@
 
 using namespace vex;
 
-
 void arcadeDrive() 
 {
   // Initializing Robot Configuration. DO NOT REMOVE!
