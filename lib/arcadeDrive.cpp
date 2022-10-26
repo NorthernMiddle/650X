@@ -94,25 +94,30 @@ void arcadeDrive()
 
     // Get the velocity percentage of the left motor. (Axis2 + Axis1)
     // Get the velocity percentage of the right motor. (Axis2 - Axis1)
+    
     int leftMotorSpeed = Con.Axis2.position() + Con.Axis1.position();
     int rightMotorSpeed = Con.Axis2.position() - Con.Axis1.position();
 
-    // Set the speed of the left motor. If the value is less than the deadband,
-    // set it to zero.
-    if (abs(leftMotorSpeed) < JOYSTICK_DEADZONE) {
+    // Set the speed of the left motor. If the value is less than the deadband, set it to zero.
+    if (abs(leftMotorSpeed) < JOYSTICK_DEADZONE) 
+    {
       // Set the speed to zero.
       LeftMotor.setVelocity(0, percent);
-    } else {
+    } 
+    else 
+    {
       // Set the speed to leftMotorSpeed
       LeftMotor.setVelocity(leftMotorSpeed, percent);
     }
 
-    // Set the speed of the right motor. If the value is less than the deadband,
-    // set it to zero.
-    if (abs(rightMotorSpeed) < JOYSTICK_DEADZONE) {
+    // Set the speed of the right motor. If the value is less than the deadband, set it to zero.
+    if (abs(rightMotorSpeed) < JOYSTICK_DEADZONE) 
+    {
       // Set the speed to zero
       RightMotor.setVelocity(0, percent);
-    } else {
+    } 
+    else 
+    {
       // Set the speed to rightMotorSpeed
       RightMotor.setVelocity(rightMotorSpeed, percent);
     }
