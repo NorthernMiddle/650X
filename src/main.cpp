@@ -2,7 +2,7 @@
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
 /*    Author:       LoJac10                                                   */
-/*    Created:      10/25/2022                                                */
+/*    Created:      10/26/2022                                                */
 /*    Description:  Competition VRC Template for 650X "Xray". Template        */
 /*                  includes options to select autonomous programs using      */
 /*                  Jpearman 'buttons' module.                                */
@@ -58,14 +58,14 @@ typedef struct _button
 // Button definitions
 button buttons[] = 
 {
-  {   390,  20, 50, 50,  false, 0x228c22, "Straight" },
-  {  150,  30, 60, 60,  false, 0xE00000, "RL" },
-  {   30, 150, 50, 50,  false, 0xE00000, "RL" },
-  {  150, 150, 50, 50,  false, 0xE00000, "RR" },
-  {  270, 100, 50, 50,  false, 0xE00000, "RL" },
-  {  390, 100, 50, 50,  false, 0xE00000, "RR" },
-  {  270, 180, 50, 50,  false, 0x0000E0, "BL" },
-  {  390, 180, 50, 50,  false, 0x0000E0, "BR" }
+  {  390,  20, 50, 50,  false, 0x228c22, "RL1" },
+  {  150,  30, 60, 60,  false, 0xE00000, "RL2" },
+  {   30, 150, 50, 50,  false, 0xE00000, "RR1" },
+  {  150, 150, 50, 50,  false, 0xE00000, "RR2" },
+  {  270, 100, 50, 50,  false, 0xE00000, "BL1" },
+  {  390, 100, 50, 50,  false, 0xE00000, "BL2" },
+  {  270, 180, 50, 50,  false, 0x0000E0, "BR1" },
+  {  390, 180, 50, 50,  false, 0x0000E0, "BR2" }
 };
 
 /*-----------------------------------------------------------------------------*/
@@ -107,12 +107,13 @@ void initButtons()
 /*-----------------------------------------------------------------------------*/
 void displayButtonControls( int index, bool pressed ) 
 {
+  // variable for color
   color c;
-  Brain.Screen.setPenColor( color( white ) );    // used to outline buttons and write labels
-
-  for( int i=0; i<sizeof(buttons)/sizeof(button); i++ ) 
-  {
     
+  // used to outline buttons and write labels  
+  Brain.Screen.setPenColor( color( white ) );    
+
+  for( int i=0; i<sizeof(buttons)/sizeof(button); i++ ){
     if( buttons[i].state )
       c = buttons[i].color;
     else
@@ -121,15 +122,14 @@ void displayButtonControls( int index, bool pressed )
     Brain.Screen.setFillColor( c );
 
     // button fill
-    if( i == index && pressed == true ) 
-    {
+    if( i == index && pressed == true ){
       c = c + 0x404040; /* colors button from black (unselected) to gray (transition color) 
       for sec after touch until selection color is loaded into button after selection */
       Brain.Screen.drawRectangle( buttons[i].xpos, buttons[i].ypos, buttons[i].width, buttons[i].height, c );
     }
-    else
+    else{
       Brain.Screen.drawRectangle( buttons[i].xpos, buttons[i].ypos, buttons[i].width, buttons[i].height );
-
+    }
     // outline
     Brain.Screen.drawRectangle( buttons[i].xpos, buttons[i].ypos, buttons[i].width, buttons[i].height, color::transparent );
 
@@ -178,20 +178,21 @@ void userTouchCallbackReleased()
   }
 }
 
+///////////////////////////////////////////////////////////////////
+//
+// ++++ Pre-Autonomous Functions  ++++ 
+//
+//  You may want to perform some actions before the      
+//  competition starts. Do them in the following function.  
+//  You must return from this function or the autonomous and        
+//  usercontrol tasks will not be started.  This function is        
+//  only called once after the V5 has been powered on and not 
+//  every time that the robot is disabled.
+//
+////////////////////////////////////////////////////////////////////////////
 
-/*---------------------------------------------------------------------------*/
-/*                                                                           */
-/*                          Pre-Autonomous Functions                         */
-/*                                                                           */
-/*  You may want to perform some actions before the competition starts.      */
-/*  Do them in the following function.  You must return from this function   */
-/*  or the autonomous and usercontrol tasks will not be started.  This       */
-/*  function is only called once after the V5 has been powered on and        */
-/*  not every time that the robot is disabled.                               */
-/*                                                                           */
-/*---------------------------------------------------------------------------*/
-
-void pre_auton(void) {
+void pre_auton(void) 
+{
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
@@ -199,16 +200,17 @@ void pre_auton(void) {
   // Example: clearing encoders, setting servo positions, ...
 }
 
-/*---------------------------------------------------------------------------*/
-/*                                                                           */
-/*                              Autonomous Task                              */
-/*                                                                           */
-/*  This task is used to control your robot during the autonomous phase of   */
-/*  a VEX Competition.                                                       */
-/*                                                                           */
-/*  You must modify the code to add your own robot specific commands here.   */
-/*                                                                           */
-/*---------------------------------------------------------------------------*/
+/////////////////////////////////////////////////////////////
+//
+// ++++ Autonomous Task  ++++ 
+//
+//  This task is used to control your robot during the 
+//  autonomous phase of a VEX Competition.       
+//                              
+//  You must modify the code to add your own robot specific 
+//  commands here.
+//
+//////////////////////////////////////////////////////////////////////////////////////
 
 void autonomous( void ) {
   int count = 0;
@@ -220,59 +222,84 @@ void autonomous( void ) {
       Brain.Screen.printAt( 60,  125, "Auton %d Running %5d", autonomousSelection, count++ );
    switch( autonomousSelection )
    {
+           
     case 0:
-      // RL1 Auton Program
-      Auton_Straight();
+      // Red Left 1 Auton Program
+      Auton_RL1();
       break;
+           
     case 1:
-      // RL2 Auton Program
-      Auton_RL();
+      // Red Left 2 Auton Program
+      Auton_RL2();
       break;
+           
     case 2:
-      // RR2 Auton Program
-      Auton_RR();
+      // Red Right 1 Auton Program
+      Auton_RR1();
       break;
+           
     case 3:
-      // BL1 Auton Program
-      Auton_BL();
+      // Red Right 2 Auton Program
+      Auton_RR2();
       break;
+           
     case 4:
-      // BR1 Auton Program
-      Auton_BR();
+      // Blue Left 1 Auton Program
+      Auton_BL1();
       break;
+           
+    case 5:
+      // Blue Left 2 Auton Program
+      Auton_BL2();
+      break;
+           
+    case 6:
+      // Blue Right 1 Auton Program
+      Auton_BR1();
+      break;
+     
+    case 7:
+      // Blue Right 2 Auton Program
+      Auton_BR2();
+      break; 
     }
     break;
   }
 }
 
-/*---------------------------------------------------------------------------*/
-/*                                                                           */
-/*                              User Control Task                            */
-/*                                                                           */
-/*  This task is used to control your robot during the user control phase of */
-/*  a VEX Competition.                                                       */
-/*                                                                           */
-/*  You must modify the code to add your own robot specific commands here.   */
-/*                                                                           */
-/*---------------------------------------------------------------------------*/
+/////////////////////////////////////////////////////////////
+//
+//  ++++ User Control Task  ++++ 
+//
+//  This task is used to control your robot during the 
+//  user control phase of a VEX Competition. 
+//
+//  You must modify the code to add your own robot specific commands here. 
+//
+//////////////////////////////////////////////////////////////////////////////////////
 
-void usercontrol(void) {
+void usercontrol(void) 
+{
   Brain.Screen.clearScreen();
+    
   int count = 0;
-  while ( true ) {
+  while ( true ) 
+  {
     Brain.Screen.printAt( 60,  125, "Driver Running %5d", count++ );
+      
     thread tankdrive_t = thread(tankDrive_f);     // thread DRIVE
     thread lift_t = thread(trayLift_f);           // thread TRAY LIFT
     thread spinners_t = thread(intake_f);         // thread INTAKE
+      
     task::sleep(100); 
   }
 }
 
-/////////////////////////////////////////////////////////////////////
+//////////////////////////
 //
-//      +++++++++++++++++++ MAIN +++++++++++++++++++
+//  ++++ MAIN ++++ 
 //
-/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////
 int main() {
   
     Competition.autonomous( autonomous );
