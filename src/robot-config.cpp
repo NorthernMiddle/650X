@@ -12,7 +12,7 @@ controller Controller1 = controller(primary);
 
 motor TrayLiftCentermotor = motor(PORT9, ratio36_1, true);
 //motor TrayLiftExtramotor = motor(PORT5, ratio36_1, false);
-//motor_group TrayLiftmotors(TrayLiftCentermotor, TrayLiftExtramotor);
+
 
 limit TrayLiftlimit = limit(Brain.ThreeWirePort.B);
 
