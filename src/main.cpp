@@ -55,6 +55,11 @@ typedef struct _button
     const char *label;
 } button;
 
+// hexidecimal color variables
+int hex_Red = 0xE00000; // red HEX color
+int hex_Green = 0x2228c22; // green HEX color
+int hex_Blue = 0x0000E0; // blue HEX color
+
 // Button definitions
 button buttons[] = 
 {
@@ -218,10 +223,12 @@ void autonomous( void ) {
   {
     if( autonomousSelection < 0 )
       Brain.Screen.printAt( 60,  125, "Auton not selected  " );
+      
     else
+        
       Brain.Screen.printAt( 60,  125, "Auton %d Running %5d", autonomousSelection, count++ );
-   switch( autonomousSelection )
-   {
+      
+   switch( autonomousSelection ){
            
     case 0:
       // Red Left 1 Auton Program
@@ -286,11 +293,19 @@ void usercontrol(void)
   while ( true ) 
   {
     Brain.Screen.printAt( 60,  125, "Driver Running %5d", count++ );
-      
-    thread tankdrive_t = thread(tankDrive_f);     // thread DRIVE
+    
+    // thread call name indicates drive control 
+    thread tankdrive_t = thread(tankDrive_f);     // thread call to DRIVE FUNCTION
+    // thread call name indicates method of intake -- game specific  
+    thread spinners_t = thread(intake_f);         // thread call to INTAKE FUNCTION
+    // thread call name indicates mechanism #1 for game specific usages
     thread lift_t = thread(trayLift_f);           // thread TRAY LIFT
-    thread spinners_t = thread(intake_f);         // thread INTAKE
-      
+    // ...
+    // ...
+    // thread call name indicates mechanism #... for game specific usages
+    // thread xxx_t = thread(xxxx_f);
+    
+    // sleep threads. Allow other tasks to run
     task::sleep(100); 
   }
 }
