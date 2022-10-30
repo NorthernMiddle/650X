@@ -2,7 +2,7 @@
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
 /*    Author:       LoJac10                                                   */
-/*    Created:      10/26/2022                                                */
+/*    Created:      Oct 30th, 2022                                            */
 /*    Description:  Competition VRC Template for 650X "Xray". Template        */
 /*                  includes options to select autonomous programs using      */
 /*                  Jpearman 'buttons' & 'autonSelect' module.                */
