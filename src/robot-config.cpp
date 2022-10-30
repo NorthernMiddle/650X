@@ -7,19 +7,24 @@ using code = vision::code;
 // A global instance of brain used for printing to the V5 Brain screen
 brain  Brain;
 
+///////////////////////////////////
+//
 // VEXcode device constructors
+//
+/////////////////////////////////////////////////////////
+
+// controller
 controller Controller1 = controller(primary);
 
-motor TrayLiftCentermotor = motor(PORT9, ratio36_1, true);
-//motor TrayLiftExtramotor = motor(PORT5, ratio36_1, false);
+// flywheel
+motor flyWheel1 = motor(PORT8, ratio18_1, true); 
+motor flyWheel2 = motor(PORT5, ratio18_1, false); 
+motor_group flyWheels = motor_group(flyWheel1, flyWheel2);
 
+// intake
+motor intake = motor(PORT2, ratio36_1, false);
 
-limit TrayLiftlimit = limit(Brain.ThreeWirePort.B);
-
-motor L_Intake = motor(PORT2, ratio36_1, true);
-motor R_Intake = motor(PORT10, ratio36_1, false);
-motor_group Spinners(L_Intake, R_Intake);
-
+// motors & drivetrain
 motor LFmotor = motor(PORT3, ratio18_1, false);
 motor LBmotor = motor(PORT6, ratio18_1, false);
 motor_group LeftSide = motor_group(LFmotor, LBmotor);
@@ -28,11 +33,17 @@ motor RFmotor = motor(PORT8, ratio18_1, true);
 motor RBmotor = motor(PORT5, ratio18_1, true); 
 motor_group RightSide = motor_group(RFmotor, RBmotor);
 
-drivetrain Drivetrain = drivetrain(LeftSide, RightSide, 299.24, 304.79999999999995, 228.6, mm, 1);
+smartdrive Drivetrain = smartdrive(LeftSide, RightSide, TurnGyroSmart, 319.19, 320, 130, mm, 1);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
 bool RemoteControlCodeEnabled = true;
+
+///////////////////////////////////
+//
+// VEXcode Initialization
+//
+/////////////////////////////////////////////////////////
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Text.
@@ -40,5 +51,23 @@ bool RemoteControlCodeEnabled = true;
  * This should be called at the start of your int main function.
  */
 void vexcodeInit( void ) {
-  // nothing to initialize
+  
+  // start initialization
+  Brain.Screen.print("Device initialization...");
+  Brain.Screen.setCursor(2, 1);
+  
+  // calibrate the drivetrain gyro
+  wait(200, msec);
+  TurnGyroSmart.startCalibration(1);
+  Brain.Screen.print("Calibrating Gyro for Drivetrain");
+  // wait for the gyro calibration process to finish
+  while (TurnGyroSmart.isCalibrating()) {
+    wait(25, msec);
+  }
+  
+  // reset the screen now that the calibration is complete
+  Brain.Screen.clearScreen();
+  Brain.Screen.setCursor(1, 1);
+  wait(50, msec);
+  Brain.Screen.clearScreen();
 }
