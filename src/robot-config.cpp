@@ -22,7 +22,6 @@ motor_group Spinners(L_Intake, R_Intake);
 
 motor LFmotor = motor(PORT3, ratio18_1, false);
 motor LBmotor = motor(PORT6, ratio18_1, false);
-motor STRAFmotor = motor(PORT4, ratio36_1, false);
 motor_group LeftSide = motor_group(LFmotor, LBmotor);
 
 motor RFmotor = motor(PORT8, ratio18_1, true); 
