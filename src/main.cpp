@@ -56,9 +56,9 @@ typedef struct _button
 } button;
 
 // hexidecimal color variables
-int hex_Red = 0xE00000;     // red HEX color
-int hex_Blue = 0x0000E0;    // blue HEX color
-int hex_Green = 0x2228c22;  // green HEX color
+int hex_Red = 0xE00000;     // red HEX color        /* used for Red Autonomous Selection */
+int hex_Blue = 0x0000E0;    // blue HEX color       /* used for Blue Autonomous Selection */
+int hex_Green = 0x2228c22;  // green HEX color      /* used to indicate most reliable (MONEY) Autonomous Selection */
 
 // Button definitions
 button buttons[] = 
