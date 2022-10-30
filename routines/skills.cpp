@@ -7,6 +7,12 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
+///////////////////////////////////////////
+//
+//	--- Skills Routine Selector ---
+//
+///////////////////////////////////////////
+
 /**	skillsRed.cpp
   *	
   *
@@ -23,25 +29,3 @@ void skillsBlue() {
   // enter your Blue Alliance skills program here...
 }
 
-///////////////////////////////////////////
-//
-//	--- Skills Routine Selector ---
-//
-///////////////////////////////////////////
-/*
-std::string skillsRoutines[] = { "Red, Blue" };
-void goSkills(int routine) {
-    switch(routine) {
-      case 0:
-			  // Red Skills Routine Selected
-			  Brain.Screen.printAt( 60, 125, "Red Skills Routine Selected ");
-        skillsRed();
-        break;
-      case 1:
-        // Blue Skills Routine Selected
-        Brain.Screen.printAt( 60, 125, "Blue Skills Routine Selected ");
-        skillsBlue();
-        break;
-    }
-}
-*/
