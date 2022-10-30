@@ -18,11 +18,11 @@
   void displayButtonControls( int index, bool pressed );
 
   // module: auton programs
-  void 
-  void
-  void
-  void
-  void 
-  void
-  void
-  void
+  void Auton_RL1();
+  void Auton_RL2();
+  void Auton_RR1();
+  void Auton_RR2();
+  void Auton_BL1();
+  void Auton_BL2();
+  void Auton_BR1();
+  void Auton_BR2();
