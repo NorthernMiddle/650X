@@ -223,53 +223,53 @@ void autonomous( void ) {
   {
     if( autonomousSelection < 0 )
       Brain.Screen.printAt( 60,  125, "Auton not selected  " );
-      
     else
-        
       Brain.Screen.printAt( 60,  125, "Auton %d Running %5d", autonomousSelection, count++ );
-      
-   switch( autonomousSelection ){
+   switch( autonomousSelection )
+   {
            
+    // Red Left 1 Auton Program       
     case 0:
-      // Red Left 1 Auton Program
       Auton_RL1();
       break;
            
+    // Red Left 2 Auton Program       
     case 1:
-      // Red Left 2 Auton Program
       Auton_RL2();
       break;
            
+    // Red Right 1 Auton Program       
     case 2:
-      // Red Right 1 Auton Program
       Auton_RR1();
       break;
            
+    // Red Right 2 Auton Program       
     case 3:
-      // Red Right 2 Auton Program
       Auton_RR2();
       break;
-           
+    
+    // Blue Left 1 Auton Program        
     case 4:
-      // Blue Left 1 Auton Program
       Auton_BL1();
       break;
-           
+   
+    // Blue Left 2 Auton Program       
     case 5:
-      // Blue Left 2 Auton Program
       Auton_BL2();
       break;
-           
+    
+    // Blue Right 1 Auton Program       
     case 6:
-      // Blue Right 1 Auton Program
       Auton_BR1();
       break;
-     
+    
+    // Blue Right 2 Auton Program 
     case 7:
-      // Blue Right 2 Auton Program
       Auton_BR2();
       break; 
+           
     }
+      
     break;
   }
 }
@@ -285,13 +285,11 @@ void autonomous( void ) {
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-void usercontrol(void) 
-{
+void usercontrol(void) {
   Brain.Screen.clearScreen();
     
   int count = 0;
-  while ( true ) 
-  {
+  while ( true ) {
     Brain.Screen.printAt( 60,  125, "Driver Running %5d", count++ );
     
     // thread call name indicates drive control 
