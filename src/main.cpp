@@ -57,8 +57,8 @@ typedef struct _button
 
 // hexidecimal color variables
 int hex_Red = 0xE00000;     // red HEX color
-int hex_Green = 0x2228c22;  // green HEX color
 int hex_Blue = 0x0000E0;    // blue HEX color
+int hex_Green = 0x2228c22;  // green HEX color
 
 // Button definitions
 button buttons[] = 
