@@ -1,29 +1,37 @@
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*    Module:       pid.cpp                                                   */
+/*    Author:       LoJac10                                                   */
+/*    Created:      Oct 30th, 2022                                            */
+/*    Description:  PID is used to accuractely move & turn some distance      */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
+
 #include "vex.h"
 using namespace vex;
 
-///////////////////////////////////////////////
-// PID 
-///////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  PID is a way to move some distance or turn to some angle.
+//  The distance or angle from a target is called error.
+//  To reduce error precisely, PID uses three variables to calculate speed.
+//  It adds up the three variables and uses the sum as the speed output.
+//    P: Proportional
+//      - If you’re not where you want to be, get there. Go faster if you're far and slower if you're close.
+//      - Where most of the speed comes from.
+//    
+//    I: Integral
+//      - If you haven’t been where you want to be for a long time, get there faster.
+//     - Makes sure speed is fast enough to overcome friction & weight of robot (steady-state error).
+//    D: Derivative
+//      - If you’re getting close to where you want to be, slow down.
+//      - Smooths out any unwanted oscillations and overshoot.
+//  PID is tuned by changing the values Kp, Ki, and Kd (found in the PID cycle functions).
+//  Each tuning constant controls how much its corresponding variable affects the speed output.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*
-  PID is a way to move some distance or turn to some angle.
-  The distance or angle from a target is called error.
-  To reduce error precisely, PID uses three variables to calculate speed.
-  It adds up the three variables and uses the sum as the speed output.
-    P: Proportional
-      - If you’re not where you want to be, get there. Go faster if you're far and slower if you're close.
-      - Where most of the speed comes from.
-    
-    I: Integral
-      - If you haven’t been where you want to be for a long time, get there faster.
-      - Makes sure speed is fast enough to overcome friction & weight of robot (steady-state error).
-    D: Derivative
-      - If you’re getting close to where you want to be, slow down.
-      - Smooths out any unwanted oscillations and overshoot.
-  PID is tuned by changing the values Kp, Ki, and Kd (found in the PID cycle functions).
-  Each tuning constant controls how much its corresponding variable affects the speed output.
-*/
-
+// variables
 double fwd_error = 0; // Distance from target forward distance
 double fwd_lastError = 0; // Keep track of last error for the derivative (rate of change)
 double fwd_integral = 0; // Integral accumulates the error, speeding up if target is not reached fast enough
@@ -33,9 +41,6 @@ double turn_error = 0; // Relative angle from the target rotation (degrees)
 double turn_lastError = 0;
 double turn_integral = 0;
 double turn_derivative = 0;
-
-
-
 
 // Get speed by doing one cycle of PID
 double fwdPIDCycle(double targetDist, double maxSpeed)
