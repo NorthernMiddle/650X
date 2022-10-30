@@ -3,8 +3,8 @@
 /*    Module:       auton.h                                                   */
 /*    Author:       LoJac10                                                   */
 /*    Created:      Oct 30th, 2022                                            */
-/*    Description:  auton program select module and auton                     */
-/*    program header file                                                     */
+/*    Description:  auton program select module and auton program             */
+/*    header file                                                             */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
