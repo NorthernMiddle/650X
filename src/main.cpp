@@ -63,12 +63,12 @@ int hex_Blue = 0x0000E0;    // blue HEX color
 // Button definitions
 button buttons[] = 
 {
-  {  390,  20, 50, 50,  false, 0x228c22, "RL1" },   // red left Auton Program #1
+  {  390,  20, 50, 50,  false, 0xE00000, "RL1" },   // red left Auton Program #1
   {  150,  30, 60, 60,  false, 0xE00000, "RL2" },   // red left Auton Program #2
   {   30, 150, 50, 50,  false, 0xE00000, "RR1" },   // red right Auton Program #1
   {  150, 150, 50, 50,  false, 0xE00000, "RR2" },   // red right Auton Program #2
-  {  270, 100, 50, 50,  false, 0xE00000, "BL1" },   // blue left Auton Program #1
-  {  390, 100, 50, 50,  false, 0xE00000, "BL2" },   // blue left Auton Program #2
+  {  270, 100, 50, 50,  false, 0x0000E0, "BL1" },   // blue left Auton Program #1
+  {  390, 100, 50, 50,  false, 0x0000E0, "BL2" },   // blue left Auton Program #2
   {  270, 180, 50, 50,  false, 0x0000E0, "BR1" },   // blue right Auton Program #1
   {  390, 180, 50, 50,  false, 0x0000E0, "BR2" }    // blue right Auton Program #2
 };
