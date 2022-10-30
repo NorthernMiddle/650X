@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
-/*    Module:       skills.cpp                                                  */
-/*    Author:       NMS_RP                                                    */
-/*    Created:      23 Nov 2019                                               */
-/*    Description:  60 Second Skills Routines                                 */
+/*    Module:       skills.cpp                                                */
+/*    Author:       LoJac10                                                   */
+/*    Created:      Oct 30th, 2022                                            */
+/*    Description:  60-Second Skills Routines                                 */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
@@ -13,18 +13,16 @@
 //
 ///////////////////////////////////////////
 
-/**	skillsRed.cpp
-  *	
-  *
-  */
+/*-----------------------------------------------------------------------------*/
+/** @brief      Skills Red Program                                             */
+/*-----------------------------------------------------------------------------*/
 void skillsRed() {
   // enter your Red Alliance skills program here...
 }
 
-/**	skillsBlue.cpp
-  *	
-  *
-  */
+/*-----------------------------------------------------------------------------*/
+/** @brief      Skills Blue Program                                            */
+/*-----------------------------------------------------------------------------*/
 void skillsBlue() {
   // enter your Blue Alliance skills program here...
 }
