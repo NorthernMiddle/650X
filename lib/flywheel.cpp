@@ -21,7 +21,7 @@ int FlyPID(){
     else{
       ReadyShoot = false;
     }
-    Power += (error*kp + totalError * ki + (error - preverror) * kd)/12;
+    Power = (error*kp + totalError * ki + (error - preverror) * kd)/12;
     Flywheel.spin(forward, Power, volt);
     preverror = error;
     totalError += error;
