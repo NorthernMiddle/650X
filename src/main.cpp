@@ -294,8 +294,10 @@ void usercontrol(void) {
     
     // thread call name indicates drive control 
     thread tankdrive_t = thread(tankDrive_f);     // thread call to DRIVE FUNCTION
+      
     // thread call name indicates method of intake -- game specific  
     thread spinners_t = thread(intake_f);         // thread call to INTAKE FUNCTION
+      
     // thread call name indicates mechanism #1 for game specific usages
     thread lift_t = thread(trayLift_f);           // thread TRAY LIFT
     // ...
