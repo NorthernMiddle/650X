@@ -1,4 +1,5 @@
 #include "vex.h"
+#include "inertialCal.h"
 
 using namespace vex;
 using signature = vision::signature;
@@ -7,67 +8,64 @@ using code = vision::code;
 // A global instance of brain used for printing to the V5 Brain screen
 brain  Brain;
 
-///////////////////////////////////
-//
-// VEXcode device constructors
-//
-/////////////////////////////////////////////////////////
-
 // controller
 controller Controller1 = controller(primary);
 
-// flywheel
-motor flyWheel1 = motor(PORT8, ratio18_1, true); 
-motor flyWheel2 = motor(PORT5, ratio18_1, false); 
-motor_group flyWheels = motor_group(flyWheel1, flyWheel2);
+// sensors
+inertial DrivetrainInertial = inertial(PORT18);
 
-// intake
-motor intake = motor(PORT2, ratio36_1, false);
+// motors
+motor LeftFront = motor(PORT1, ratio6_1, true);
+motor LeftBack = motor(PORT10, ratio6_1, true);
+motor RightFront = motor(PORT11, ratio6_1, false);
+motor RightBack = motor(PORT19, ratio6_1, false);
+motor Indexer = motor(PORT12, ratio36_1, false);
+motor Intake = motor(PORT2, ratio6_1, false);
+motor Flywheel1 = motor(PORT16, ratio6_1, false);
+motor Flywheel2 = motor(PORT17, ratio6_1, true);
 
-// motors & drivetrain
-motor LFmotor = motor(PORT3, ratio18_1, false);
-motor LBmotor = motor(PORT6, ratio18_1, false);
-motor_group LeftSide = motor_group(LFmotor, LBmotor);
+// grouping
+motor_group LeftSide = motor_group(LeftFront, LeftBack);
+motor_group RightSide = motor_group(RightFront, RightBack);
+motor_group Flywheel = motor_group(Flywheel1, Flywheel2);
 
-motor RFmotor = motor(PORT8, ratio18_1, true); 
-motor RBmotor = motor(PORT5, ratio18_1, true); 
-motor_group RightSide = motor_group(RFmotor, RBmotor);
+// constants
+const double wheelTravel = 299.24; // 3.25-in wheels
+const double trackWidth = 349.25;  // 13.75-inches
+const double wheelBase = 241.30;   // 9.5-inches
+const double gearRatio = 0.5;     // 36:72 --> 1:2
 
-smartdrive Drivetrain = smartdrive(LeftSide, RightSide, TurnGyroSmart, 319.19, 320, 130, mm, 1);
+// drivetrain
+smartdrive robotDrive = smartdrive(LeftSide, RightSide, DrivetrainInertial, wheelTravel, trackWidth, wheelBase, distanceUnits::mm, gearRatio);
+
+
+
 
 // VEXcode generated functions
-// define variable for remote controller enable/disable
-bool RemoteControlCodeEnabled = true;
-
-///////////////////////////////////
-//
-// VEXcode Initialization
-//
-/////////////////////////////////////////////////////////
 
 /**
- * Used to initialize code/tasks/devices added using tools in VEXcode Text.
+ * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  * 
  * This should be called at the start of your int main function.
  */
 void vexcodeInit( void ) {
-  
-  // start initialization
   Brain.Screen.print("Device initialization...");
   Brain.Screen.setCursor(2, 1);
-  
-  // calibrate the drivetrain gyro
+
+  // calibrate the drivetrain Inertial
   wait(200, msec);
-  TurnGyroSmart.startCalibration(1);
-  Brain.Screen.print("Calibrating Gyro for Drivetrain");
-  // wait for the gyro calibration process to finish
-  while (TurnGyroSmart.isCalibrating()) {
+  inertialStartCal();
+  Brain.Screen.print("Calibrating Inertial for Drivetrain");
+  // wait for the Inertial calibration process to finish
+  while ( DrivetrainInertial.isCalibrating() == true ) 
+  {
+    displayInertialStats_f();
     wait(25, msec);
   }
-  
+
   // reset the screen now that the calibration is complete
   Brain.Screen.clearScreen();
-  Brain.Screen.setCursor(1, 1);
+  Brain.Screen.setCursor(1,1);
   wait(50, msec);
   Brain.Screen.clearScreen();
 }
