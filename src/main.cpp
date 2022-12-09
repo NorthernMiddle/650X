@@ -2,7 +2,7 @@
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
 /*    Author:       LoJac10                                                   */
-/*    Created:      Oct 30th, 2022                                            */
+/*    Created:      17th Nov 2022                                             */
 /*    Description:  Competition VRC Template for 650X "Xray". Template        */
 /*                  includes options to select autonomous programs using      */
 /*                  Jpearman 'buttons' & 'autonSelect' module.                */
@@ -12,14 +12,15 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                       
-// LFmotor              motor         20
-// LBmotor              motor         11
-// RFmotor              motor         10
-// RBmotor              motor         1   
+// LFmotor              motor         1
+// LBmotor              motor         10
+// RFmotor              motor         11
+// RBmotor              motor         19   
 // Flywheel1            motor         8               
 // Flywheel2            motor         9               
-// Indexer              motor         7           
-// Drivetrain           drivetrain    20, 11, 10, 1      
+// Indexer              motor         7   
+// Inertial Sensor      sensor        3        
+// Drivetrain           drivetrain    1, 10, 11, 19      
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 // ----| START CONTROLS INFO |----
@@ -34,14 +35,22 @@
 // VEX V5 C++ Project
 #include "vex.h"
 #include "auton.h"
+#include "skills.h"
 #include "operations.h"
-#include "fieldgraphic.h"
+#include "drive.h"
+
 using namespace vex;
 
 // A global instance of competition
 competition Competition;
 
+// state variable for autonomous selection
 int autonomousSelection = -1;
+
+// state variable for escape from auton selection operation
+// int manual_mode = false;
+
+
 
 // collect data for on screen button
 typedef struct _button 
@@ -63,14 +72,16 @@ int hex_Green = 0x2228c22;  // green HEX color      /* used to indicate most rel
 // Button definitions
 button buttons[] = 
 {
-  {  390,  20, 50, 50,  false, 0xE00000, "RL1" },   // red left Auton Program #1
-  {  150,  30, 60, 60,  false, 0xE00000, "RL2" },   // red left Auton Program #2
-  {   30, 150, 50, 50,  false, 0xE00000, "RR1" },   // red right Auton Program #1
-  {  150, 150, 50, 50,  false, 0xE00000, "RR2" },   // red right Auton Program #2
-  {  270, 100, 50, 50,  false, 0x0000E0, "BL1" },   // blue left Auton Program #1
-  {  390, 100, 50, 50,  false, 0x0000E0, "BL2" },   // blue left Auton Program #2
-  {  270, 180, 50, 50,  false, 0x0000E0, "BR1" },   // blue right Auton Program #1
-  {  390, 180, 50, 50,  false, 0x0000E0, "BR2" }    // blue right Auton Program #2
+  // Red Auton Programs
+  {   30,  30, 60, 60,  false, 0xE00000, "RF1" },   // Red Far 1 Auton Program #1
+  {  150,  30, 60, 60,  false, 0xE00000, "RF2" },   // Red Far 2 Auton Program #2
+  {  270,  30, 60, 60,  false, 0xE00000, "RN1" },   // Red Near 1 Auton Program #3
+  {  390,  30, 60, 60,  false, 0xE00000, "RN2" },   // Red Near 2 Auton Program #4
+  // Blue Auton Programs
+  {   30, 150, 60, 60,  false, 0x0000E0, "BF1" },   // Blue Far 1 Auton Program #5
+  {  150, 150, 60, 60,  false, 0x0000E0, "BF2" },   // Blue Far 2 Auton Program #6
+  {  270, 150, 60, 60,  false, 0x0000E0, "BN1" },   // Blue Near 1 Auton Program #7
+  {  390, 150, 60, 60,  false, 0x0000E0, "BN2" }    // Blue Near 2 Auton Program #8
 };
 
 /*-----------------------------------------------------------------------------*/
@@ -198,11 +209,14 @@ void userTouchCallbackReleased()
 
 void pre_auton(void) 
 {
-  // Initializing Robot Configuration. DO NOT REMOVE!
-  vexcodeInit();
-
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
+
+  vexcodeInit();  // Initializing Robot Configuration. DO NOT REMOVE!
+  //calibrateInertialSensor();
+  
+
+  
 }
 
 /////////////////////////////////////////////////////////////
@@ -228,44 +242,44 @@ void autonomous( void ) {
    switch( autonomousSelection )
    {
            
-    // Red Left 1 Auton Program       
+    // Red Far 1 Auton Program       
     case 0:
-      Auton_RL1();
+      Auton_RF1();
       break;
            
-    // Red Left 2 Auton Program       
+    // Red Far 2 Auton Program       
     case 1:
-      Auton_RL2();
+      Auton_RF2();
       break;
            
-    // Red Right 1 Auton Program       
+    // Red Near 1 Auton Program       
     case 2:
-      Auton_RR1();
+      Auton_RN1();
       break;
            
-    // Red Right 2 Auton Program       
+    // Red Near 2 Auton Program       
     case 3:
-      Auton_RR2();
+      Auton_RN2();
       break;
     
-    // Blue Left 1 Auton Program        
+    // Blue Far 1 Auton Program        
     case 4:
-      Auton_BL1();
+      Auton_BF1();
       break;
    
-    // Blue Left 2 Auton Program       
+    // Blue Far 2 Auton Program       
     case 5:
-      Auton_BL2();
+      Auton_BF2();
       break;
     
-    // Blue Right 1 Auton Program       
+    // Blue Near 1 Auton Program       
     case 6:
-      Auton_BR1();
+      Auton_BN1();
       break;
     
-    // Blue Right 2 Auton Program 
+    // Blue Near 2 Auton Program 
     case 7:
-      Auton_BR2();
+      Auton_BN2();
       break; 
            
     }
@@ -285,29 +299,33 @@ void autonomous( void ) {
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
+// This is the main execution loop for the user control program.
+// Each time through the loop your program should update motor + servo
+// values based on feedback from the joysticks.
+
+// ........................................................................
+// Insert user code here. This is where you use the joystick values to
+// update your motors, etc.
+// ........................................................................
+
 void usercontrol(void) {
   Brain.Screen.clearScreen();
     
-  int count = 0;
+  // User control code here, inside the loop
   while ( true ) {
-    Brain.Screen.printAt( 60,  125, "Driver Running %5d", count++ );
-    
-    // thread call name indicates drive control 
-    thread tankdrive_t = thread(tankDrive_f);     // thread call to DRIVE FUNCTION
-      
-    // thread call name indicates method of intake -- game specific  
-    thread spinners_t = thread(intake_f);         // thread call to INTAKE FUNCTION
-      
-    // thread call name indicates mechanism #1 for game specific usages
-    thread lift_t = thread(trayLift_f);           // thread TRAY LIFT
-    // ...
+
+    thread(drive_t) = thread(arcadeDrive_f);     // thread call to DRIVE FUNCTION
+    thread(intake_t) = thread(intake_f);         // thread call to INTAKE FUNCTION
+    thread(indexer_t) = thread(indexer_f);       // thread call to INDEXER FUNCTION
+    thread(flywheel_t) = thread(flywheel_f);     // thread call to FLYWHEEL FUNCTION
     // ...
     // thread call name indicates mechanism #... for game specific usages
     // thread xxx_t = thread(xxxx_f);
     
     // sleep threads. Allow other tasks to run
-    task::sleep(100); 
+    task::sleep( 100 ); 
   }
+
 }
 
 ////////////////////////////////////////////////////////////////
@@ -323,27 +341,20 @@ int main() {
     Competition.autonomous( autonomous );
     Competition.drivercontrol( usercontrol );
 
+    // run the pre-auton program
+    pre_auton();
+
     // register events
     Brain.Screen.pressed( userTouchCallbackPressed );
     Brain.Screen.released( userTouchCallbackReleased );
     
     // background
-    Brain.Screen.setFillColor( vex::color(kLedColorWhite) );
-    Brain.Screen.drawRectangle( 0, 0, 240, 240);
-
-    fieldGraphic();
-
-    Brain.Screen.setFillColor( vex::color(0x404040) );
-    Brain.Screen.setPenColor( vex::color(0x404040) );
-    Brain.Screen.drawRectangle( 240, 0, 240, 165 );
-
-    Brain.Screen.setFillColor( vex::color(kLedColorRed) );
-    Brain.Screen.setPenColor( vex::color(kLedColorRed) );
-    Brain.Screen.drawRectangle( 240, 85, 240, 170 );
-
-    Brain.Screen.setFillColor( vex::color(kLedColorBlue) );
-    Brain.Screen.setPenColor( vex::color(kLedColorBlue) );
-    Brain.Screen.drawRectangle( 240, 165, 240, 240 );
+    Brain.Screen.setFillColor( vex::color(0x400000) );
+    Brain.Screen.setPenColor( vex::color(0x400000) );
+    Brain.Screen.drawRectangle( 0, 0, 480, 120 );
+    Brain.Screen.setFillColor( vex::color(0x000040) );
+    Brain.Screen.setPenColor( vex::color(0x000040) );
+    Brain.Screen.drawRectangle( 0, 120, 480, 120 );
 
     // initial display
     displayButtonControls( 0, false );
@@ -351,7 +362,7 @@ int main() {
     while( true ) {
       // Allow other tasks to run
       if( !Competition.isEnabled() )
-        Brain.Screen.printAt( 60,  90, "Disabled. Make Auton Selection.        " );
-      this_thread::sleep_for(10);
+        Brain.Screen.printAt( 60,  125, "Disabled. Make Auton Selection.        " );
+      this_thread::sleep_for( 25 );
     }
 }
