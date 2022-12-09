@@ -1,129 +1,188 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       auton.cpp                                                 */
-/*    Author:       LoJac10                                                   */
-/*    Created:      Oct 30th, 2022                                            */
+/*    Author:       NMS_RP                                                    */
+/*    Created:      28 Nov 2022                                               */
 /*    Description:  15-Second Autonomous Routines                             */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
 #include "vex.h"
+#include "inertialCal.h"
+#include "operations.h"
 using namespace vex;
 
-/**	============================= Autonomous Routine Definitions =============================
-  *
-  *	Red Left 1 - RL1 - <narative of goal of this auton program>
-  *	Red Left 2 - RL2 - <narative of goal of this auton program>
-  *	Red Right 1 - RR1 - <narative of goal of this auton program>
-  *	Red Right 2 - RR2 - <narative of goal of this auton program>
-  *
-  *	Blue Left 1 - BL1 - <narative of goal of this auton program>
-  * Blue Left 2 - BL2 - <narative of goal of this auton program>
-  *	Blue Right 1 - BR1 - <narative of goal of this auton program>
-  *	Blue Right 2 - BR2 - <narative of goal of this auton program>
-  *
-  * ============================================================================================ */
 
-/*-----------------------------------------------------------------------------*/
-/** @brief      Autonomous Red Left 1                                          */
-/*-----------------------------------------------------------------------------*/
-void Auton_RL1() {
-  Brain.Screen.clearScreen();
+/////////////////////////////////////////////////////////
+//
+// Auton 1: Red Far 1
+// Objective(s): 
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+void Auton_RF1(){
   Brain.Screen.newLine();
   Brain.Screen.setCursor(1,1);
-  Brain.Screen.print("RL1 is running..."); 
+  Brain.Screen.print("Auton Red Far #1 is running"); 
 
-  // insert Autonomous RL1 Program Here...
+  
+  // ...
+  // ...
+  // ...
+
+  robotDrive.stop();          // program stop
   task::sleep(500);   
 }
 
-/*-----------------------------------------------------------------------------*/
-/** @brief      Autonomous Red Left 2                                          */
-/*-----------------------------------------------------------------------------*/
-void Auton_RL2() {
-  Brain.Screen.clearScreen();
+/////////////////////////////////////////////////////////
+//
+// Auton 2: Red Far 2
+// Objective(s): 
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+void Auton_RF2(){
   Brain.Screen.newLine();
   Brain.Screen.setCursor(1,1);
-  Brain.Screen.print("RL2 is running...");
+  Brain.Screen.print("Auton Red Far #2 is running"); 
 
-  // insert Autonomous RL2 Program Here...
-  task::sleep(500);   
-}  
+  // ...
+  // ...
+  // ...
 
-/*-----------------------------------------------------------------------------*/
-/** @brief      Autonomous Red Right 1                                         */
-/*-----------------------------------------------------------------------------*/
-void Auton_RR1() {
-  Brain.Screen.clearScreen();
-  Brain.Screen.newLine();
-  Brain.Screen.setCursor(1,1);
-  Brain.Screen.print("RR1 is running...");
-
-  // insert Autonomous RR1 Program Here...
+  robotDrive.stop();          // program stop
   task::sleep(500);   
 }
 
-/*-----------------------------------------------------------------------------*/
-/** @brief      Autonomous Red Right 2                                         */
-/*-----------------------------------------------------------------------------*/
-void Auton_RR2() {
-  Brain.Screen.clearScreen();
+
+/////////////////////////////////////////////////////////
+//
+// Auton 3: Red Near 1
+// Objective(s): 
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+void Auton_RN1(){
   Brain.Screen.newLine();
   Brain.Screen.setCursor(1,1);
-  Brain.Screen.print("RR2 is running...");
+  Brain.Screen.print("Auton Red Near #1 is running"); 
 
-  // insert Autonomous RR2 Program Here...
+  // ...
+  // ...
+  // ...
+
+  robotDrive.stop();          // program stop
+  task::sleep(500);   
+
+}
+
+
+/////////////////////////////////////////////////////////
+//
+// Auton 4: Red Near 2
+// Objective(s): 
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+void Auton_RN2(){
+  Brain.Screen.newLine();
+  Brain.Screen.setCursor(1,1);
+  Brain.Screen.print("Auton Red Near #2 is running"); 
+
+  // ...
+  // ...
+  // ...
+
+  robotDrive.stop();          // program stop
   task::sleep(500);   
 }
 
-/*-----------------------------------------------------------------------------*/
-/** @brief      Autonomous Blue Left 1                                         */
-/*-----------------------------------------------------------------------------*/
-void Auton_BL1() {
-  Brain.Screen.clearScreen();
+
+/////////////////////////////////////////////////////////
+//
+// Auton 5: Blue Far 1
+// Objective(s): ** EASY SCORE OPTION ** 
+//               Start flywheel, shoot 2 disc to blue goal
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+void Auton_BF1(){
   Brain.Screen.newLine();
   Brain.Screen.setCursor(1,1);
-  Brain.Screen.print("BL1 is running...");
+  Brain.Screen.print("Auton Blue Far #1 is running"); 
 
-  // insert Autonomous BL1 Program Here...
+
+  // ...
+  // ...
+  // ...
+
+  
   task::sleep(500);   
 }
 
-/*-----------------------------------------------------------------------------*/
-/** @brief      Autonomous Blue Left 2                                         */
-/*-----------------------------------------------------------------------------*/
-void Auton_BL2() {
-  Brain.Screen.clearScreen();
+
+/////////////////////////////////////////////////////////
+//
+// Auton 6: Blue Far 2
+// Objective(s): 
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+void Auton_BF2(){
   Brain.Screen.newLine();
   Brain.Screen.setCursor(1,1);
-  Brain.Screen.print("BL2 is running...");
+  Brain.Screen.print("Auton Blue Far #2 is running"); 
 
-  // insert Autonomous BL2 Program Here...
+  // ...
+  // ...
+  // ...
+
+  robotDrive.stop();          // program stop
   task::sleep(500);   
 }
 
-/*-----------------------------------------------------------------------------*/
-/** @brief      Autonomous Blue Right 1                                        */
-/*-----------------------------------------------------------------------------*/
-void Auton_BR1() {
-  Brain.Screen.clearScreen();
+
+/////////////////////////////////////////////////////////
+//
+// Auton 7: Blue Near 1
+// Objective(s): ** EASY SCORE OPTION ** 
+//               Starting in Front in Roller, Roll fwd and capture roller for Blue color, 
+//               turn left, position to shoot 2 disc to blue goal.
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+void Auton_BN1(){
   Brain.Screen.newLine();
   Brain.Screen.setCursor(1,1);
-  Brain.Screen.print("BR1 is running...");
+  Brain.Screen.print("Auton Blue Near #1 is running"); 
 
-  // insert Autonomous BR1 Program Here...
+  robotDrive.driveFor( forward, 10, inches, 5, rpm, false );
+  robotDrive.driveFor( forward, 20, inches, 10, rpm, false );
+  robotDrive.driveFor( forward, 50, inches, 20, rpm, false );
+  robotDrive.driveFor( forward, 80, inches, 90, rpm, true ); 
+
+  intakeAuton_DOWN( 90, 1500 ); // run intake for 1.5 sec backward to spit out disc into low goal area
+
+  robotDrive.driveFor( reverse, 10, inches, 5, rpm, false );
+  robotDrive.driveFor( reverse, 20, inches, 10, rpm, false );
+  robotDrive.driveFor( reverse, 50, inches, 20, rpm, false );
+  robotDrive.driveFor( reverse, 80, inches, 90, rpm, true ); 
+
+  robotDrive.stop();
+
+  // sleep thread to not hog CPU
   task::sleep(500);   
 }
 
-/*-----------------------------------------------------------------------------*/
-/** @brief      Autonomous Blue Right 2                                        */
-/*-----------------------------------------------------------------------------*/
-void Auton_BR2() {
-  Brain.Screen.clearScreen();
+
+/////////////////////////////////////////////////////////
+//
+// Auton 8: Blue Near 2
+// Objective(s): 
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+void Auton_BN2(){
   Brain.Screen.newLine();
   Brain.Screen.setCursor(1,1);
-  Brain.Screen.print("BR2 is running...");
+  Brain.Screen.print("Auton Blue Near #2 is running"); 
 
-  // insert Autonomous BR2 Program Here...
+  // ...
+  // ...
+  // ...
+
+  robotDrive.stop();          // program stop
   task::sleep(500);   
 }
