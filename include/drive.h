@@ -7,6 +7,7 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
+// function prototypes for driver control period
 void set_drive_pow(int l, int r);
 void right_arcade_drive();
 int arcadeDrive_f();
