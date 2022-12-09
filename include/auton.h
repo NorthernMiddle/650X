@@ -2,9 +2,9 @@
 /*                                                                            */
 /*    Module:       auton.h                                                   */
 /*    Author:       LoJac10                                                   */
-/*    Created:      Oct 30th, 2022                                            */
+/*    Created:      Nov 17th, 2022                                            */
 /*    Description:  auton program select module and auton program             */
-/*    header file                                                             */
+/*                  header file                                               */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
@@ -18,11 +18,11 @@
   void displayButtonControls( int index, bool pressed );
 
   // module: auton programs
-  void Auton_RL1();
-  void Auton_RL2();
-  void Auton_RR1();
-  void Auton_RR2();
-  void Auton_BL1();
-  void Auton_BL2();
-  void Auton_BR1();
-  void Auton_BR2();
+  void Auton_RF1();
+  void Auton_RF2();
+  void Auton_RN1();
+  void Auton_RN2();
+  void Auton_BF1();
+  void Auton_BF2();
+  void Auton_BN1();
+  void Auton_BN2();
