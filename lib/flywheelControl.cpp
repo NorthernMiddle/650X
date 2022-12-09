@@ -1,3 +1,11 @@
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*    Module:       flywheelControl.cpp                                        */
+/*    Author:       LoJac10                                                   */
+/*    Created:      6 December 2022                                           */
+/*    Description:  Module to control flywheel                                */
+/*----------------------------------------------------------------------------*/
+
 motor_group Flywheel = motor_group(Fly1, Fly2);
 bool maintainSpeed = false;
 double targetspeed = 600;
