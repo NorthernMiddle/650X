@@ -31,14 +31,15 @@
 // Tank Drive
 // ----| END CONTROLS INFO |----
 
-
-// VEX V5 C++ Project
+// using vex library
 #include "vex.h"
+
 #include "auton.h"
 #include "skills.h"
 #include "operations.h"
 #include "drive.h"
 
+// using vex namespace
 using namespace vex;
 
 // A global instance of competition
